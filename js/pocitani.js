@@ -48,7 +48,7 @@ $(document).ready(function () {
                         btn_summitResult.addClass("btn-success");
                         btn_summitResult.removeClass("btn-danger");
                         btn_summitResult.val("DOBŘE");
-                        alert("DOBŘE");
+
                     }
                     else {
                         btn_summitResult.addClass("btn-danger");
@@ -59,7 +59,7 @@ $(document).ready(function () {
                 }
 
             }, error: function () {
-                alert("Spatny");
+                alert("Fail");
             }
         });
 

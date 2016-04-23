@@ -53,7 +53,8 @@
                             <div class="text-center">
                                 <label for="calcResult" class="form-control-label">Sem zadejte váš výsledek</label>
                             </div>
-                            <input type="text" name="calcResult" class="form-control" id="calcResult" autocomplete="off">
+                            <input type="number" name="calcResult" class="form-control" id="calcResult"
+                                   autocomplete="off">
 
                         </div>
                     </div>
@@ -71,6 +72,13 @@
 
 
 
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="footer">
+
+            </div>
+        </div>
     </div>
 
 
