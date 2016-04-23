@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,QAAS;EACP,UAAU,EAAE,GAAG;EACf,aAAa,EAAE,GAAG",
+"sources": ["css/style.scss"],
+"names": [],
+"file": "JSON"
+}
