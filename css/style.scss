@@ -1,9 +1,25 @@
-
+@font-face {
+  src: url("font-awesome-4.6.1/fonts/fontawesome-webfont.woff");
+  font-family: FontAwesome;
+}
 .numbers {
   margin-top: 10%;
   margin-bottom: 11%; }
 #calcResult{
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
+body {
+  background: url("../images/backgroundBody.svg") fixed center no-repeat;
+  margin: 0 auto;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+h1 {
+  font-family: FontAwesome;
 }
 
 

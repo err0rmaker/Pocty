@@ -19,7 +19,7 @@ $(document).ready(function () {
         var int_numberA;
         var int_numberB;
         var str_sign;
-        var btn_summitResult = btn_summitResult;
+        var btn_summitResult = $("#submitResult");
 
         e.preventDefault();
 
@@ -48,6 +48,7 @@ $(document).ready(function () {
                         btn_summitResult.addClass("btn-success");
                         btn_summitResult.removeClass("btn-danger");
                         btn_summitResult.val("DOBŘE");
+                        alert("DOBŘE");
                     }
                     else {
                         btn_summitResult.addClass("btn-danger");
