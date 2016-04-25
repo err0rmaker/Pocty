@@ -14,6 +14,7 @@ $(document).ready(function () {
     var str_sign;
     var generateNext = true;
 
+
     $("#resultForm").on("submit", function (e) {
         e.preventDefault();
         console.log(generateNext);
@@ -22,16 +23,18 @@ $(document).ready(function () {
             sendAndRecieveResult();
             generateNext = false;
         } else {
+
+            $("#numberA").html(int_numberA);
+            $("#numberB").html(int_numberB);
+            $("#numberResult").html("?");
+            $("#sign").html(str_sign);
+
+
             btn_summitResult.removeClass("btn-danger");
             btn_summitResult.removeClass("btn-success");
-            btn_summitResult.val("Další příklad");
-
-
+            btn_summitResult.val("Zkontrolovat");
             generateNext = true;
-
         }
-
-
     });
 
     function sendAndRecieveResult() {
@@ -53,16 +56,14 @@ $(document).ready(function () {
                 resultData = JSON.parse(data);
                 bool_succesful = resultData["succesful"];
                 bool_result = resultData["result"];
+                int_result = resultData["int_result"];
                 int_numberA = resultData["numberA"];
                 int_numberB = resultData["numberB"];
                 str_sign = resultData["sign"];
 
 
-                $("#numberA").html(int_numberA);
-                $("#numberB").html(int_numberB);
-                $("#numberResult").html(int_numberB);
+                $("#numberResult").html(int_result);
 
-                $("#sign").html(str_sign);
 
 
                 if (bool_succesful == true) {

@@ -8,7 +8,7 @@ $json = array(
     'numberA' => 0,
     'numberB' => 0,
     'sign' => "+",
-    'signPokus' => "+"
+    'int_result' => 0
 );
 
 $tempSignArr = changeOperation();
@@ -26,6 +26,9 @@ if (isset($_POST["result"], $_POST["numberA"], $_POST["numberB"], $_POST["sign"]
             if (((int)$numberA + (int)$numberB == (int)$result))
                 $json["result"] = true;
 
+            $json["int_result"] = (int)$numberA + (int)$numberB;
+            
+
 
             break;
 
@@ -33,10 +36,14 @@ if (isset($_POST["result"], $_POST["numberA"], $_POST["numberB"], $_POST["sign"]
             if (((int)$numberA - (int)$numberB == (int)$result))
                 $json["result"] = true;
 
+            $json["int_result"] = (int)$numberA - (int)$numberB;
+
             break;
         case "*":
             if (((double)$numberA * (int)$numberB == (int)$result))
                 $json["result"] = true;
+
+            $json["int_result"] = (int)$numberA * (int)$numberB;
 
 
             break;
@@ -44,6 +51,8 @@ if (isset($_POST["result"], $_POST["numberA"], $_POST["numberB"], $_POST["sign"]
             if (((double)$numberA / (double)$numberB == (double)$result))
                 $json["result"] = true;
 
+
+            $json["int_result"] = (int)$numberA / (int)$numberB;
 
             break;
     }
