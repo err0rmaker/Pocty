@@ -13,6 +13,7 @@ $(document).ready(function () {
     var int_numberB;
     var str_sign;
     var generateNext = true;
+    var backgroundIndex = 2;
 
 
     $("#resultForm").on("submit", function (e) {
@@ -21,9 +22,11 @@ $(document).ready(function () {
 
         if (generateNext == true) {
             sendAndRecieveResult();
+            $("#calcResult").attr('disabled', true);
             generateNext = false;
-        } else {
 
+        } else {
+            $("#calcResult").attr('disabled', false);
             $("#numberA").html(int_numberA);
             $("#numberB").html(int_numberB);
             $("#numberResult").html("?");
@@ -65,27 +68,50 @@ $(document).ready(function () {
                 $("#numberResult").html(int_result);
 
 
-
                 if (bool_succesful == true) {
 
                     if (bool_result == true) {
                         btn_summitResult.addClass("btn-success");
                         btn_summitResult.removeClass("btn-danger");
                         btn_summitResult.val("DOBŘE");
+                        if (backgroundIndex <= 3) {
+                            backgroundIndex++;
+                        }
+                        changeBackground(backgroundIndex);
 
-                    }
-                    else {
+                    } else {
                         btn_summitResult.addClass("btn-danger");
                         btn_summitResult.removeClass("btn-success");
                         btn_summitResult.val("ŠPATNĚ");
+                        if (backgroundIndex >= 1)
+                            backgroundIndex--;
+                        changeBackground(backgroundIndex);
+
+
+                    }
+
                     }
                     $("#calcResult").val("");
                 }
 
-            }, error: function () {
+            ,
+            error: function () {
                 alert("Fail");
             }
         });
     }
+
+
+    var body = $('body');
+    var backgrounds = ["images/background_0.svg", "images/background_1.svg", "images/background_2.svg", "images/background_3.svg", "images/background_4.svg"];
+
+    function changeBackground(backgroundIndex) {
+        console.log(backgroundIndex);
+        body.css('background', 'url(' + backgrounds[backgroundIndex] + ')');
+        body.css('background-repeat', 'no-repeat');
+        body.css('background-size', 'cover');
+
+    }
+
 
 });
