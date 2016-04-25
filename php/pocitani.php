@@ -1,11 +1,6 @@
 <?php
-
-$signArr = array(
-    "+",
-    "-",
-    "*",
-    "/",
-);
+session_start();
+include_once "changeOperation.php";
 
 $json = array(
     'succesful' => false,
@@ -15,13 +10,17 @@ $json = array(
     'sign' => "+",
     'signPokus' => "+"
 );
+
+$tempSignArr = changeOperation();
+
+//print_r($tempSignArr);
+
+$json["sign"] = $tempSignArr[mt_rand(0, sizeof($tempSignArr) - 1)];
 if (isset($_POST["result"], $_POST["numberA"], $_POST["numberB"], $_POST["sign"])) {
     $result = $_POST["result"];
     $numberA = $_POST["numberA"];
     $numberB = $_POST["numberB"];
     $sign = $_POST["sign"];
-
-
     switch ($sign) {
         case "+":
             if (((int)$numberA + (int)$numberB == (int)$result))
@@ -48,7 +47,6 @@ if (isset($_POST["result"], $_POST["numberA"], $_POST["numberB"], $_POST["sign"]
 
             break;
     }
-    $json["sign"] = $signArr[mt_rand(0, 3)];
 
     switch ($json["sign"]) {
         case "+":

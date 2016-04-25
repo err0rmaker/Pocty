@@ -24,52 +24,95 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class=" col-xs-6 col-xs-offset-3 operationMode">
+
+        <form action="#" id="form_operationMode">
+
+            <div class="checkbox">
+                <label class="form-control-label  col-xs-3"><input type="checkbox" name="mode_plus" id="mode_plus"
+                                                                   value="+"><b> +</b></label>
+            </div>
+
+
+            <div class="checkbox">
+                <label class="form-control-label  col-xs-3"><input type="checkbox" name="mode_minus" id="mode_minus"
+                                                                   value="-"><b> -</b></label>
+
+            </div>
+
+
+            <div class="checkbox">
+                <label class="form-control-label  col-xs-3"><input type="checkbox" name="mode_multiply"
+                                                                   id="mode_multiply" value="*"><b> *</b></label>
+
+            </div>
+
+
+            <div class="checkbox">
+                <label class="form-control-label  col-xs-3"><input type="checkbox" name="mode_divide" id="mode_divide"
+                                                                   value="/"><b> ÷</b></label>
+
+            </div>
+
+
+        </form>
+    </div>
+
+</div>
+</div>
+
 <div class="container text-xs-center ">
     <div class="col-lg-offset-4 col-md-offset-4 col-xs-offset-0 col-md-4">
         <div class="numbers ">
             <div class="row">
 
 
-                <div class="col-lg-4 col-md-4 col-sm-4  col-xs-4 ">
+                <div class=" col-xs-2 ">
                     <h1 id="numberA">6</h1>
                 </div>
-                <div class="col-lg-4 col-md-4  col-sm-4 col-xs-4">
+                <div class="col-xs-2">
                     <h1 id="sign">+</h1>
                 </div>
-                <div class="col-lg- col-md-4  col-sm-4 col-xs-4">
+                <div class="col-xs-2">
                     <h1 id="numberB">8</h1>
                 </div>
+                <div class="col-xs-2">
+                    <h1 id="equalsSign">=</h1>
+                </div>
+                <div class="col-xs-2">
+                    <h1 id="numberResult">?</h1>
+                </div>
             </div>
-            
+
         </div>
 
 
-            <div class="row">
+        <div class="row">
 
 
-                <form method="POST" action="#" id="resultForm" role="form">
-                    <div class="row">
-                        <div class="form-group col-lg-12 col-md-12  col-xs-12">
+            <form method="POST" action="#" id="resultForm" role="form">
+                <div class="row">
+                    <div class="form-group col-lg-12 col-md-12  col-xs-12">
+                        <div class="text-center">
+                            <label for="calcResult" class="form-control-label">Sem zadejte váš výsledek</label>
+                        </div>
+                        <input type="number" name="calcResult" class="form-control" id="calcResult"
+                               autocomplete="off">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="text-center">
-                                <label for="calcResult" class="form-control-label">Sem zadejte váš výsledek</label>
-                            </div>
-                            <input type="number" name="calcResult" class="form-control" id="calcResult"
-                                   autocomplete="off">
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="text-center">
-                                    <input type="submit" value="Zkontrolovat" id="submitResult" class="btn">
-                                </div>
+                                <input type="submit" value="Zkontrolovat" id="submitResult" class="btn">
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-
+                </div>
+            </form>
+        </div>
 
 
     </div>
@@ -86,6 +129,7 @@
 
 <script src="js/jquery-2.2.3.min.js"></script>
 <script src="js/pocitani.js"></script>
+
 
 </body>
 </html>
