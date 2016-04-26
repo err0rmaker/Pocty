@@ -8,7 +8,7 @@ function changeOperation()
         "/" => true,
     );
     if (empty($_POST["mode_plus"]) && empty($_POST["mode_minus"]) && empty($_POST["mode_multiply"]) && empty($_POST["mode_divide"])) {
-        //echo "sdfaerfawefawefawefawefawefawefawef";
+
 
         $tempSignArr = array("+", "-", "*", "/");
 

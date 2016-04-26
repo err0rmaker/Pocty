@@ -1,24 +1,13 @@
-<!doctype html>
-<html lang="cz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="font-awesome-4.6.1/css/font-awesome.min.css">
-
-
-</head>
+<?php
+require "php/header.php";
+?>
 <body>
-
 <div class="container">
     <div class="topNav">
         <div class="row">
 
             <div class="col-xs-offset-10 col-xs-2">
-                <a>LOGIN</a>
+                <a href="php/login.php">LOGIN</a>
             </div>
 
         </div>
@@ -59,7 +48,6 @@
         </form>
     </div>
 
-</div>
 </div>
 
 <div class="container text-xs-center ">
@@ -131,5 +119,6 @@
 <script src="js/pocitani.js"></script>
 
 
-</body>
-</html>
+<?php
+require "php/footer.php";
+?>
