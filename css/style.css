@@ -8,10 +8,6 @@
     font-size: 1.5em;
   }
 }
-@font-face {
-  src: url("font-awesome-4.6.1/fonts/fontawesome-webfont.woff");
-  font-family: FontAwesome;
-}
 .numbers {
   margin-top: 10%;
   margin-bottom: 11%; }
@@ -26,20 +22,20 @@ body {
   height: auto;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-h1 {
-  font-family: FontAwesome;
+  color: #BCC8D1;
 }
 
 .footer {
-  padding-bottom: 1000px;
+  margin-top: 500px;
 }
 
 .operationMode {
+  height: 40px;
   text-align: center;
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .operationMode h1 {
@@ -90,6 +86,20 @@ h1 {
 .new-account {
   display: block;
   margin-top: 10px;
+}
+
+#registerButton {
+  margin-top: 20px;
+}
+
+.topNavElement {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.topNavElement button {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,11 +1,6 @@
 $(document).ready(function () {
-    var txt_numberA;
-    var txt_numberB;
     var txt_resultForm;
-    var txt_sign;
     var btn_summitResult = $("#submitResult");
-
-
     var resultData;
     var bool_succesful;
     var bool_result;
@@ -14,7 +9,6 @@ $(document).ready(function () {
     var str_sign;
     var generateNext = true;
     var backgroundIndex = 2;
-
 
     $("#resultForm").on("submit", function (e) {
         e.preventDefault();
@@ -41,14 +35,10 @@ $(document).ready(function () {
     });
 
     function sendAndRecieveResult() {
-        txt_numberA = $("#numberA").text();
-        txt_numberB = $("#numberB").text();
-        txt_numberResult = $("#numberResult").text();
-        txt_resultForm = $("#calcResult").val();
-        txt_sign = $("#sign").html();
-        btn_summitResult = $("#submitResult");
 
-        var jsonData = {numberA: txt_numberA, numberB: txt_numberB, result: txt_resultForm, sign: txt_sign};
+        txt_resultForm = $("#calcResult").val();
+
+        var jsonData = {result: txt_resultForm};
         jsonData = $.param(jsonData) + '&' + $("#form_operationMode").serialize();
 
         console.log(jsonData);
@@ -73,7 +63,7 @@ $(document).ready(function () {
                     if (bool_result == true) {
                         btn_summitResult.addClass("btn-success");
                         btn_summitResult.removeClass("btn-danger");
-                        btn_summitResult.val("DOBŘE");
+                        btn_summitResult.val("Další příklad");
                         if (backgroundIndex <= 3) {
                             backgroundIndex++;
                         }
@@ -82,7 +72,7 @@ $(document).ready(function () {
                     } else {
                         btn_summitResult.addClass("btn-danger");
                         btn_summitResult.removeClass("btn-success");
-                        btn_summitResult.val("ŠPATNĚ");
+                        btn_summitResult.val("další příklad");
                         if (backgroundIndex >= 1)
                             backgroundIndex--;
                         changeBackground(backgroundIndex);

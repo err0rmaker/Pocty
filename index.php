@@ -1,20 +1,35 @@
 <?php
-require "php/header.php";
+session_start();
+
+require "php/inc/header.php";
+require "php/generate.php";
+require "php/inc/functionsMath.php";
+if (!isset($_SESSION["numbers"])) {
+    $tempSignArr = array("+", "-", "*", "/");
+    $sign = generateSign($tempSignArr);
+    $_SESSION["sign"] = $sign;
+    $_SESSION["numbers"] = generateNumbers($sign);
+}
+SetLocale(LC_ALL, "Czech");
+$date = StrFTime("Y-m-d", Time());
+echo $date;
 ?>
-<body>
+    <body>
 <div class="container">
     <div class="topNav">
         <div class="row">
 
-            <div class="col-xs-offset-10 col-xs-2">
-                <a href="php/login.php">LOGIN</a>
+            <div class="col-xs-offset-9 col-xs-2 topNavElement">
+                <a href="php/login.php">
+                    <button class="btn btn-default">LOGIN</button>
+                </a>
             </div>
 
         </div>
     </div>
 </div>
 <div class="container">
-    <div class=" col-xs-6 col-xs-offset-3 operationMode">
+    <div class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0 operationMode">
 
         <form action="#" id="form_operationMode">
 
@@ -39,7 +54,8 @@ require "php/header.php";
 
 
             <div class="checkbox">
-                <label class="form-control-label  col-xs-3"><input type="checkbox" name="mode_divide" id="mode_divide"
+                <label class="form-control-label  col-xs-3"><input type="checkbox" name="mode_divide"
+                                                                   id="mode_divide"
                                                                    value="/"><b> ÷</b></label>
 
             </div>
@@ -56,14 +72,14 @@ require "php/header.php";
             <div class="row">
 
 
-                <div class=" col-xs-2 ">
-                    <h1 id="numberA">6</h1>
+                <div class="col-xs-2 col-xs-offset-1">
+                    <h1 id="numberA"><?php echo $_SESSION["numbers"]["numberA"] ?></h1>
                 </div>
                 <div class="col-xs-2">
-                    <h1 id="sign">+</h1>
+                    <h1 id="sign"><?php echo $_SESSION["sign"] ?></h1>
                 </div>
                 <div class="col-xs-2">
-                    <h1 id="numberB">8</h1>
+                    <h1 id="numberB"><?php echo $_SESSION["numbers"]["numberB"] ?></h1>
                 </div>
                 <div class="col-xs-2">
                     <h1 id="equalsSign">=</h1>
@@ -104,15 +120,20 @@ require "php/header.php";
 
 
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="footer">
 
-            </div>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <p>
+
+                <a href="login.php">
+                    <h2>Pro testy, statistiky a soutěže se přihlašte</h2>
+                </a>
+            </p>
         </div>
     </div>
-
-
 </div>
 
 <script src="js/jquery-2.2.3.min.js"></script>
@@ -120,5 +141,5 @@ require "php/header.php";
 
 
 <?php
-require "php/footer.php";
+require "php/inc/footer.php";
 ?>

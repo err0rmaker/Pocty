@@ -1,7 +1,10 @@
 <?php
 session_start();
-include_once "changeOperation.php";
-
+include_once "inc/changeOperation.php";
+include_once "inc/functionsMath.php";
+$numberA = $_SESSION["numbers"]["numberA"];
+$numberB = $_SESSION["numbers"]["numberB"];
+$sign = $_SESSION["sign"];
 $json = array(
     'succesful' => false,
     'result' => false,
@@ -13,14 +16,9 @@ $json = array(
 
 $tempSignArr = changeOperation();
 
-//print_r($tempSignArr);
 
-$json["sign"] = $tempSignArr[mt_rand(0, sizeof($tempSignArr) - 1)];
-if (isset($_POST["result"], $_POST["numberA"], $_POST["numberB"], $_POST["sign"])) {
+if (isset($_POST["result"])) {
     $result = $_POST["result"];
-    $numberA = $_POST["numberA"];
-    $numberB = $_POST["numberB"];
-    $sign = $_POST["sign"];
     switch ($sign) {
         case "+":
             if (((int)$numberA + (int)$numberB == (int)$result))
@@ -57,34 +55,17 @@ if (isset($_POST["result"], $_POST["numberA"], $_POST["numberB"], $_POST["sign"]
             break;
     }
 
-    switch ($json["sign"]) {
-        case "+":
-            $json['numberA'] = mt_rand(1, 100);
-            $json['numberB'] = mt_rand(1, 100);
+    $json["sign"] = generateSign($tempSignArr);
+    $numbers = generateNumbers($sign);
+    $json["numberA"] = $numbers["numberA"];
+    $json["numberB"] = $numbers["numberB"];
 
-            break;
-
-        case "-":
-            $json['numberA'] = mt_rand(1, 100);
-            $json['numberB'] = mt_rand(1, 100);
-            break;
-        case "*":
-            $json['numberA'] = mt_rand(1, 10);
-            $json['numberB'] = mt_rand(1, 10);
-
-
-            break;
-        case "/":
-            do {
-                $tempA = mt_rand(2, 81);
-                $tempB = mt_rand(2, 9);
-            } while (($tempA % $tempB != 0) || $tempA < $tempB);
-            $json['numberA'] = $tempA;
-            $json['numberB'] = $tempB;
-            break;
-    }
+    $_SESSION["numbers"]["numberA"] = $json["numberA"];
+    $_SESSION["numbers"]["numberB"] = $json["numberB"];
+    $_SESSION["sign"] = $json["sign"];
     $json["succesful"] = true;
 }
+
 
 echo json_encode($json);
 

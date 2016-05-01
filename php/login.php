@@ -1,6 +1,7 @@
 <?php
-require "header.php";
-require "backHome.php";
+session_start();
+require "inc/header.php";
+require "inc/backHome.php";
 ?>
 
     <div class="container">
@@ -8,24 +9,26 @@ require "backHome.php";
             <div class="col-sm-6 col-md-4 col-md-offset-4">
                 <div class="account-wall">
 
-                    <form class="form-signin">
-                        <h1 class="text-center login-title">Přihášení</h1>
+                    <form class="form-signin" action="login.php" method="post">
+                        <h1 class="text-center login-title">Přihlášení</h1>
 
-                        <input type="text" class="form-control" placeholder="Jméno" required autofocus name="jmeno">
-                        <input type="password" class="form-control" placeholder="Heslo" required name="heslo">
+                        <input type="text" class="form-control" placeholder="Jméno" required autofocus name="name">
+                        <input type="password" class="form-control" placeholder="Heslo" required name="password">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Přihlásit
                         </button>
                     </form>
 
                 </div>
-                <button type="button" class="btn btn-secondary">Registrovat</button>
-
-
+                <div class="col-xs-12 text-center" id="registerButton">
+                    <a href="register.php">
+                        <button type="button" class="btn btn-secondary">Registrovat</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 <?php
-require "footer.php";
+require "inc/footer.php";
 
 ?>
