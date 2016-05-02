@@ -1,5 +1,5 @@
 <?php
-function changeOperation()
+function filterOperations()
 {
     $signArr = array(
         "+" => true,
@@ -41,9 +41,7 @@ function changeOperation()
 
 
     foreach ($signArr as $key => $value) {
-        //echo $value;
         if ($value == true) {
-            //echo $key;
             $tempSignArr[] = $key;
         }
 

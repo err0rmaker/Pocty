@@ -1,14 +1,22 @@
 $(document).ready(function () {
-    var txt_resultForm;
     var btn_summitResult = $("#submitResult");
+    var element_numberA = $("#numberA");
+    var element_numberB = $("#numberB");
+    var element_numberResult = $("#numberResult");
+    var element_sign = $("#sign");
+
+
+    var txt_resultForm;
     var resultData;
     var bool_succesful;
     var bool_result;
     var int_numberA;
     var int_numberB;
+    var int_result;
     var str_sign;
     var generateNext = true;
     var backgroundIndex = 2;
+
 
     $("#resultForm").on("submit", function (e) {
         e.preventDefault();
@@ -16,15 +24,15 @@ $(document).ready(function () {
 
         if (generateNext == true) {
             sendAndRecieveResult();
-            $("#calcResult").attr('disabled', true);
+            //$("#calcResult").attr('disabled', true);
             generateNext = false;
 
         } else {
-            $("#calcResult").attr('disabled', false);
-            $("#numberA").html(int_numberA);
-            $("#numberB").html(int_numberB);
-            $("#numberResult").html("?");
-            $("#sign").html(str_sign);
+            //$("#calcResult").attr('disabled', false);
+            element_numberA.html(int_numberA);
+            element_numberB.html(int_numberB);
+            element_numberResult.html("?");
+            element_sign.html(str_sign);
 
 
             btn_summitResult.removeClass("btn-danger");
@@ -43,7 +51,7 @@ $(document).ready(function () {
 
         console.log(jsonData);
         $.ajax({
-            url: 'php/pocitani.php', type: "POST", data: jsonData,
+            url: 'php/math.php', type: "POST", data: jsonData,
             success: function (data) {
                 console.log(data);
                 resultData = JSON.parse(data);
@@ -55,7 +63,7 @@ $(document).ready(function () {
                 str_sign = resultData["sign"];
 
 
-                $("#numberResult").html(int_result);
+                element_numberResult.html(int_result);
 
 
                 if (bool_succesful == true) {

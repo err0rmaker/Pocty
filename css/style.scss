@@ -1,5 +1,13 @@
 $transpaerntBcColor: rgba(0, 0, 0, 0.2);
 @media handheld {
+  body {
+    color: #BCC8D1;
+
+  }
+  p h1 h2 {
+    color: #BCC8D1;
+  }
+
   .numbers {
     margin-top: 0;
     margin-bottom: 0;
@@ -17,6 +25,10 @@ $transpaerntBcColor: rgba(0, 0, 0, 0.2);
   background-color: $transpaerntBcColor;
 }
 
+#bootstrap-overrides {
+  font-family: Verdana;
+  color: rgba(43, 43, 43, 0.72)
+}
 body {
   background: url("../images/background_2.svg") fixed center no-repeat;
   margin: 0 auto;
@@ -24,7 +36,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  color: #BCC8D1;
 
 }
 

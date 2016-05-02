@@ -1,9 +1,10 @@
 <?php
 session_start();
 require "inc/header.php";
-require "inc/backHome.php";
+require "inc/topNav.php";
 require "functions.php";
 $errorMsg = "";
+$message = "";
 if (isset($_POST["name"]) && isset($_POST["password"]) && isset($_POST["password2"])) {
     $name = clean($_POST["name"]);
     $password = clean($_POST["password"]);
@@ -14,42 +15,22 @@ if (isset($_POST["name"]) && isset($_POST["password"]) && isset($_POST["password
         $errorMsg = "Hesla se neshodují";
     } elseif (strlen($password) < 8) {
         $errorMsg = "Heslo musí být alespoň 8 znaků dlouhé";
-    } else {
-        $errormsg = "";
-        createUserAccount($name, $password);
 
+
+    } else {
+        if (userExists($name)) {
+            $errorMsg = "Uživatelské jméno už je zabráno";
+        } else {
+            $errormsg = "";
+            if (createUserAccount($name, $password)) {
+                $message = "Registrace proběhla v pořádku." . "<a href = 'login.php.'>Můžete se teď přihlásit</a>";
+                header("Location: login.php");
+            }
+        }
 
     }
-
-
 } else {
     $errorMsg = "Vyplňte všechna pole";
-}
-/**
- * Vyčistí jméno a heslo od uvozovek a vloží uživatele do databáze
- * @param $name
- * @param $password
- *
- */
-function createUserAccount($name, $password)
-{
-
-
-    $conn = DBConnect();
-    //obrana proti sql injekci
-    $name = $conn->real_escape_string($name);
-    $password = $conn->real_escape_string($password);
-
-
-    SetLocale(LC_ALL, "Czech");
-    $date = StrFTime("%d/%m/%Y %H:%M:%S", Time());
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    $sql = "INSERT into uzivatele (name,password,date) VALUES ('$name', '$password', '$date')";
-    if ($conn->query($sql)) {
-        printf("%d Row inserted.\n", mysqli_affected_rows($conn));
-
-    }
 }
 
 ?>
@@ -70,6 +51,9 @@ function createUserAccount($name, $password)
                             Registrovat
                         </button>
                         <p><?php echo $errorMsg ?></p>
+
+                        <p><?php echo $message ?></p>
+
                     </form>
 
                 </div>

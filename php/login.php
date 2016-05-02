@@ -1,7 +1,37 @@
 <?php
 session_start();
 require "inc/header.php";
-require "inc/backHome.php";
+require "inc/topNav.php";
+require "functions.php";
+require "../configuration.php";
+
+$message = "";
+
+
+if (isset($_SESSION["name"])) {
+    header("Location; userMenu.php");
+} else {
+    if (isset($_POST["name"]) && isset($_POST["password"])) {
+        $name = clean($_POST["name"]);
+        $password = clean($_POST["password"]);
+        if (userExists($name)) {
+            echo "<br>";
+            echo "EXISTS";
+            if (authenticate($name, $password)) {
+                $_SESSION["name"] = $name;
+                header("Location: userMenu.php");
+
+            } else {
+                $message = "Špatné přihlašovací údaje";
+            }
+
+
+        }
+    } else {
+        $message = "Vyplňte všechna pole";
+    }
+}
+
 ?>
 
     <div class="container">
@@ -17,6 +47,8 @@ require "inc/backHome.php";
                         <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Přihlásit
                         </button>
+                        <p><?php echo $message ?></p>
+
                     </form>
 
                 </div>

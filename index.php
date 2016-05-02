@@ -1,33 +1,22 @@
 <?php
 session_start();
-
 require "php/inc/header.php";
-require "php/generate.php";
 require "php/inc/functionsMath.php";
 if (!isset($_SESSION["numbers"])) {
     $tempSignArr = array("+", "-", "*", "/");
     $sign = generateSign($tempSignArr);
     $_SESSION["sign"] = $sign;
     $_SESSION["numbers"] = generateNumbers($sign);
+
+
 }
-SetLocale(LC_ALL, "Czech");
-$date = StrFTime("Y-m-d", Time());
-echo $date;
+
 ?>
-    <body>
-<div class="container">
-    <div class="topNav">
-        <div class="row">
+    <body id="bootstrap-overrides">
+<?php require "php/inc/topNav.php" ?>
+<?php require "configuration.php" ?>
 
-            <div class="col-xs-offset-9 col-xs-2 topNavElement">
-                <a href="php/login.php">
-                    <button class="btn btn-default">LOGIN</button>
-                </a>
-            </div>
 
-        </div>
-    </div>
-</div>
 <div class="container">
     <div class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0 operationMode">
 
@@ -123,22 +112,26 @@ echo $date;
 
 
 </div>
-<div class="container">
+    <div class="container text-center ">
     <div class="row">
+        <div class="col-xs-offset-4 col-xs-4 ">
+            <p>
+            <h2>Procvičování</h2></p>
+        </div>
+    </div>
+        <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <p>
-
-                <a href="login.php">
-                    <h2>Pro testy, statistiky a soutěže se přihlašte</h2>
+                <a href="php/login.php">
+                    Pro testy, statistiky a soutěže se přihlašte.
                 </a>
             </p>
         </div>
     </div>
 </div>
 
+    <script src="js/math.js"></script>
 <script src="js/jquery-2.2.3.min.js"></script>
-<script src="js/pocitani.js"></script>
-
 
 <?php
 require "php/inc/footer.php";

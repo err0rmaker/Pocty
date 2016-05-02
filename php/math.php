@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "inc/changeOperation.php";
+include_once "inc/filterOperation.php";
 include_once "inc/functionsMath.php";
 $numberA = $_SESSION["numbers"]["numberA"];
 $numberB = $_SESSION["numbers"]["numberB"];
@@ -14,7 +14,6 @@ $json = array(
     'int_result' => 0
 );
 
-$tempSignArr = changeOperation();
 
 
 if (isset($_POST["result"])) {
@@ -50,11 +49,11 @@ if (isset($_POST["result"])) {
                 $json["result"] = true;
 
 
-            $json["int_result"] = (int)$numberA / (int)$numberB;
+            $json["int_result"] = (double)$numberA / (double)$numberB;
 
             break;
     }
-
+    $tempSignArr = filterOperations();
     $json["sign"] = generateSign($tempSignArr);
     $numbers = generateNumbers($sign);
     $json["numberA"] = $numbers["numberA"];
