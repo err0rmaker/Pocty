@@ -10,9 +10,8 @@ require "../header.php";
 
 ?>
     <body id="bootstrap-overrides">
-<?php require "inc/topNav.php" ?>
+<?php require "inc/userTopNav.php" ?>
 
-    <h1>MENU</h1>
 
 <?php
 require "../footer.php";

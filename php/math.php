@@ -2,6 +2,7 @@
 session_start();
 include_once "inc/filterOperation.php";
 include_once "inc/functionsMath.php";
+
 $numberA = $_SESSION["numbers"]["numberA"];
 $numberB = $_SESSION["numbers"]["numberB"];
 $sign = $_SESSION["sign"];
@@ -10,7 +11,6 @@ $json = array(
     'result' => false,
     'numberA' => 0,
     'numberB' => 0,
-    'sign' => "+",
     'int_result' => 0
 );
 
@@ -37,7 +37,7 @@ if (isset($_POST["result"])) {
 
             break;
         case "*":
-            if (((double)$numberA * (int)$numberB == (int)$result))
+            if (((int)$numberA * (int)$numberB == (int)$result))
                 $json["result"] = true;
 
             $json["int_result"] = (int)$numberA * (int)$numberB;
@@ -54,14 +54,16 @@ if (isset($_POST["result"])) {
             break;
     }
     $tempSignArr = filterOperations();
-    $json["sign"] = generateSign($tempSignArr);
+    $sign = generateSign($tempSignArr);
     $numbers = generateNumbers($sign);
+
+    $_SESSION["numbers"]["numberA"] = $numbers["numberA"];
+    $_SESSION["numbers"]["numberB"] = $numbers["numberB"];
+    $_SESSION["sign"] = $sign;
+
     $json["numberA"] = $numbers["numberA"];
     $json["numberB"] = $numbers["numberB"];
-
-    $_SESSION["numbers"]["numberA"] = $json["numberA"];
-    $_SESSION["numbers"]["numberB"] = $json["numberB"];
-    $_SESSION["sign"] = $json["sign"];
+    $json["sign"] = $sign;
     $json["succesful"] = true;
 }
 

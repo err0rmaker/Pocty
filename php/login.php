@@ -9,7 +9,7 @@ $message = "";
 
 
 if (isset($_SESSION["name"])) {
-    header("Location; userMenu.php");
+    header("Location: userTests.php");
 } else {
     if (isset($_POST["name"]) && isset($_POST["password"])) {
         $name = clean($_POST["name"]);

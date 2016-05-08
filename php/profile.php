@@ -9,7 +9,7 @@ require "../header.php";
 
 
 ?>
-<?php require "inc/topNav.php" ?>
+<?php require "inc/userTopNav.php" ?>
 
     <h1>profil</h1>
 

@@ -121,7 +121,7 @@ if (!isset($_SESSION["numbers"])) {
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <p>
-                    <a href="php/login.php">
+                    <a href="login.php">
                         Pro testy, statistiky a soutěže se přihlašte.
                     </a>
                 </p>

@@ -25,10 +25,28 @@ function generateNumbers($sign)
                 $tempA = mt_rand(2, 81);
                 $tempB = mt_rand(2, 9);
                 $tempRes = $tempA / $tempB;
-            } while (($tempA % $tempB != 0) || $tempA < $tempB || $tempRes > 9);
+            } while (($tempA % $tempB != 0) || ($tempA < $tempB) || ($tempRes > 9));
             $numbers['numberA'] = $tempA;
             $numbers['numberB'] = $tempB;
             break;
     }
     return $numbers;
+}
+
+function calculate($numberA, $numberB, $sign)
+{
+    switch ($sign) {
+        case "+":
+            return $numberA + $numberB;
+            break;
+        case "-":
+            return $numberA - $numberB;
+            break;
+        case "*":
+            return $numberA * $numberB;
+            break;
+        case "/":
+            return $numberA / $numberB;
+            break;
+    }
 }

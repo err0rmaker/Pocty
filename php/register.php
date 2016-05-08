@@ -5,32 +5,37 @@ require "inc/topNav.php";
 require "functions.php";
 $errorMsg = "";
 $message = "";
-if (isset($_POST["name"]) && isset($_POST["password"]) && isset($_POST["password2"])) {
-    $name = clean($_POST["name"]);
-    $password = clean($_POST["password"]);
-    $password2 = clean($_POST["password2"]);
 
-
-    if ($password != $password2) {
-        $errorMsg = "Hesla se neshodují";
-    } elseif (strlen($password) < 8) {
-        $errorMsg = "Heslo musí být alespoň 8 znaků dlouhé";
-
-
-    } else {
-        if (userExists($name)) {
-            $errorMsg = "Uživatelské jméno už je zabráno";
-        } else {
-            $errormsg = "";
-            if (createUserAccount($name, $password)) {
-                $message = "Registrace proběhla v pořádku." . "<a href = 'login.php.'>Můžete se teď přihlásit</a>";
-                header("Location: login.php");
-            }
-        }
-
-    }
+if (isset($_SESSION["name"])) {
+    header("Location: userTests.php");
 } else {
-    $errorMsg = "Vyplňte všechna pole";
+    if (isset($_POST["name"]) && isset($_POST["password"]) && isset($_POST["password2"])) {
+        $name = clean($_POST["name"]);
+        $password = clean($_POST["password"]);
+        $password2 = clean($_POST["password2"]);
+
+
+        if ($password != $password2) {
+            $errorMsg = "Hesla se neshodují";
+        } elseif (strlen($password) < 8) {
+            $errorMsg = "Heslo musí být alespoň 8 znaků dlouhé";
+
+
+        } else {
+            if (userExists($name)) {
+                $errorMsg = "Uživatelské jméno už je zabráno";
+            } else {
+                $errormsg = "";
+                if (createUserAccount($name, $password)) {
+                    $message = "Registrace proběhla v pořádku." . "<a href = 'login.php.'>Můžete se teď přihlásit</a>";
+                    header("Location: login.php");
+                }
+            }
+
+        }
+    } else {
+        $errorMsg = "Vyplňte všechna pole";
+    }
 }
 
 ?>

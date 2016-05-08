@@ -13,6 +13,19 @@
                 </p>
             </div>
 
+
+            <div class="col-lg-2 col-xs-3 topNavElement">
+                <a href="userTests.php">
+                    <button class="btn btn-default">Testy</button>
+
+                </a>
+            </div>
+            <div class="col-lg-2 col-xs-3 topNavElement">
+                <a href="profile.php">
+                    <button class="btn btn-default">Můj profil</button>
+
+                </a>
+            </div>
             <div class="col-lg-2 col-xs-3 topNavElement">
                 <a href="logout.php">
                     <button class="btn btn-default">LOGOUT</button>
