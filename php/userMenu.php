@@ -5,7 +5,7 @@ require "../configuration.php";
 if (!isset($_SESSION["name"])) {
     header("Location: login.php");
 }
-require "inc/header.php";
+require "../header.php";
 
 
 ?>
@@ -15,5 +15,5 @@ require "inc/header.php";
     <h1>MENU</h1>
 
 <?php
-require "inc/footer.php";
+require "../footer.php";
 ?>

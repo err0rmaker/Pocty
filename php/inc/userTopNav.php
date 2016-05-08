@@ -12,21 +12,7 @@
                     </a>
                 </p>
             </div>
-            <div class="col-lg-2 col-xs-3 topNavElement">
-                <a href="login.php">
-                    <button class="btn btn-default">LOGIN</button>
 
-
-                </a>
-
-            </div>
-            <div class="col-lg-2 col-xs-3 topNavElement">
-                <a href="register.php">
-                    <button class="btn btn-default">Registrace</button>
-
-                </a>
-
-            </div>
             <div class="col-lg-2 col-xs-3 topNavElement">
                 <a href="logout.php">
                     <button class="btn btn-default">LOGOUT</button>

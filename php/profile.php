@@ -5,16 +5,15 @@ require "../configuration.php";
 if (!isset($_SESSION["name"])) {
     header("Location: login.php");
 }
-require "inc/header.php";
+require "../header.php";
 
 
 ?>
-    <body id="bootstrap-overrides">
 <?php require "inc/topNav.php" ?>
 
     <h1>profil</h1>
 
 
 <?php
-require "inc/footer.php";
+require "../footer.php";
 ?>

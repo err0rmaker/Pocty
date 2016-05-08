@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "inc/header.php";
+require "../header.php";
 require "inc/topNav.php";
 require "functions.php";
 $errorMsg = "";
@@ -66,6 +66,6 @@ if (isset($_POST["name"]) && isset($_POST["password"]) && isset($_POST["password
         </div>
     </div>
 <?php
-require "inc/footer.php";
+require "../footer.php";
 
 ?>

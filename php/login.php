@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "inc/header.php";
+require "../header.php";
 require "inc/topNav.php";
 require "functions.php";
 require "../configuration.php";
@@ -61,6 +61,6 @@ if (isset($_SESSION["name"])) {
         </div>
     </div>
 <?php
-require "inc/footer.php";
+require "../footer.php";
 
 ?>

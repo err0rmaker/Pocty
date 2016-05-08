@@ -2,7 +2,7 @@
 
 function DBConnect()
 {
-    require "../../configuration.php";
+    require "../configuration.php";
 
 // Create connection
     $conn = new mysqli($serverName, $userName, $password, $DBName);

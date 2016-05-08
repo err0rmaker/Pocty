@@ -1,27 +1,29 @@
 <?php
+require "../configuration.php";
+require "inc/passwordLib/passwordLib.php";
+
 function authenticate($name, $password)
 {
+
     $conn = DBConnect();
     $name = $conn->real_escape_string($name);
     $password = $conn->real_escape_string($password);
-    $sql = "SELECT password FROM uzivatele WHERE name LIKE '$name'";
+    $sql = "SELECT password FROM soupak_uzivatele WHERE name LIKE '$name'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    echo "stuff";
     if (password_verify($password, $row["password"])) {
-        echo "<br>";
-        echo "im in";
 
         return true;
+    } else {
+        return false;
     }
-    return false;
 }
 
 function userExists($name)
 {
     $conn = DBConnect();
     $name = $conn->real_escape_string($name);
-    $sql = "SELECT name from uzivatele WHERE name LIKE '$name'";
+    $sql = "SELECT name from soupak_uzivatele WHERE name LIKE '$name'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -46,7 +48,7 @@ function createUserAccount($name, $password)
 
 
     $password = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT into uzivatele (name,password) VALUES ('$name', '$password')";
+    $sql = "INSERT into soupak_uzivatele (name,password) VALUES ('$name', '$password')";
     if ($conn->query($sql)) {
 
         return true;
