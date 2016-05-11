@@ -3,9 +3,11 @@ session_start();
 require "../header.php";
 require "inc/topNav.php";
 require "functions.php";
+
 $errorMsg = "";
 $message = "";
-
+$DBC = new DOConnect();
+$conn = $DBC->getConnection();
 if (isset($_SESSION["name"])) {
     header("Location: userTests.php");
 } else {

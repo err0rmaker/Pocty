@@ -1,27 +1,29 @@
 <?php
-require "../configuration.php";
-require "inc/passwordLib/passwordLib.php";
+require __DIR__ . '/../../configuration.php';
+require ROOT_PATH . "/php/inc/passwordLib/passwordLib.php";
 
-function authenticate($name, $password)
+
+function authenticate($conn, $name, $password)
 {
 
-    $conn = DBConnect();
+
     $name = $conn->real_escape_string($name);
     $password = $conn->real_escape_string($password);
     $sql = "SELECT password FROM soupak_uzivatele WHERE name LIKE '$name'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     if (password_verify($password, $row["password"])) {
-
+        $conn->close();
         return true;
-    } else {
-        return false;
     }
+    return false;
+
+
+
 }
 
-function userExists($name)
+function userExists($conn, $name)
 {
-    $conn = DBConnect();
     $name = $conn->real_escape_string($name);
     $sql = "SELECT name from soupak_uzivatele WHERE name LIKE '$name'";
     $result = $conn->query($sql);
@@ -37,11 +39,10 @@ function userExists($name)
     return false;
 }
 
-function createUserAccount($name, $password)
+function createUserAccount($conn, $name, $password)
 {
 
 
-    $conn = DBConnect();
     //obrana proti sql injekci
     $name = $conn->real_escape_string($name);
     $password = $conn->real_escape_string($password);

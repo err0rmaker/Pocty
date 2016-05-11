@@ -1,14 +1,15 @@
 <?php
 session_start();
-require "../header.php";
-require "inc/functionsMath.php";
-require "../configuration.php";
+require __DIR__ . '/../configuration.php';
+require ROOT_PATH . "/header.php";
+require ROOT_PATH . "/php/inc/functionsMath.php";
+
 if (empty($_SESSION["name"])) {
     header("Location: login.php");
 }
 
 ?>
-<?php require "inc/userTopNav.php" ?>
+<?php require ROOT_PATH . "/php/inc/userTopNav.php" ?>
     <div class="container text-center ">
         <div class="row">
             <div class="col-xs-offset-4 col-xs-4 ">
@@ -21,11 +22,11 @@ if (empty($_SESSION["name"])) {
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-5 col-md-offset-3" id="tests">
+            <div class="col-md-5 col-md-offset-3" id="tests">
 
                 <?php
 
-                if (isset($_POST["count"])) {
+                if (isset($_POST['count'])) {
                     $count = $_POST['count'];
                     $testItemsI = array();
                     for ($i = 0; $i < $count; $i++) {
@@ -34,7 +35,7 @@ if (empty($_SESSION["name"])) {
                     }
 
                     echo "<form method='post' action='userTest.php'>";
-                    for ($i = 0; $i < sizeof($testItemsI); $i++) {
+                    for ($i = 0, $iMax = count($testItemsI); $i < $iMax; $i++) {
                         $numberA = $testItemsI[$i][0];
                         $numberB = $testItemsI[$i][1];
                         $sign = $testItemsI[$i][2];
@@ -44,7 +45,7 @@ if (empty($_SESSION["name"])) {
                         echo "<input type='hidden' name='previous[]' value='{$numberA}|{$numberB}|{$sign}'>";
 
 
-                        echo "</div>";
+                        echo '</div>';
                     }
                     echo "<label for='submitTest'>Zkontrolovat</label>";
                     echo "<input type='submit' id='submitTest'>";
@@ -52,14 +53,14 @@ if (empty($_SESSION["name"])) {
                 }
 
 
-                if (isset($_POST['result']) and isset($_POST["previous"])) {
+                if (array_key_exists('result', $_POST) and array_key_exists('previous', $_POST)) {
                     $result = $_POST["result"];
-                    $score = 1;
+                    $score = 0;
                     $previous = $_POST["previous"];
-                    $scoreMax = sizeof($previous);
+                    $scoreMax = count($previous);
                     echo "<table class='table'>";
                     echo "<tr><th>Příklad</th><th>Zprávný výsledek</th><th>Váš výsledek</th><tr>";
-                    for ($i = 0; $i < sizeof($previous); $i++) {
+                    for ($i = 0, $iMax = count($previous); $i < $iMax; $i++) {
                         $prevArr = explode("|", $previous[$i]);
                         $numberA = $prevArr[0];
                         $numberB = $prevArr[1];
@@ -69,17 +70,13 @@ if (empty($_SESSION["name"])) {
 
                             $score++;
                         }
-                        echo "<tr><td>{$numberA} {$sign} {$numberA}  = </td><td>{$calculatedResult}</td><td>{$result[$i]}</td></tr>";
+                        echo "<tr><td>{$numberA} {$sign} {$numberB}  = </td><td>{$calculatedResult}</td><td>{$result[$i]}</td></tr>";
 
 
                     }
                     echo "</table>";
-
-                    echo ($scoreMax / $score) * 100;
-
+                    echo "<h4>Procento zprávných výsledků: " . ($score / $scoreMax) * 100 . " %</h4>";
                 }
-
-
                 ?>
 
 
@@ -128,5 +125,5 @@ function generateTestItem()
 
 }
 
-require "../footer.php";
+require ROOT_PATH . "/footer.php";
 ?>

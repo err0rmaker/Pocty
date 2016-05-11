@@ -1,12 +1,15 @@
 <?php
 session_start();
-require "../header.php";
-require "inc/topNav.php";
-require "functions.php";
-require "../configuration.php";
+require __DIR__ . '/../configuration.php';
 
+require ROOT_PATH . "/header.php";
+require ROOT_PATH . "/php/inc/topNav.php";
+require ROOT_PATH . "/php/functions.php";
+require_once ROOT_PATH . "/php/inc/DBConnect.php";
 $message = "";
 
+$DBC = new DOConnect();
+$conn = $DBC->getConnection();
 
 if (isset($_SESSION["name"])) {
     header("Location: userTests.php");
@@ -14,12 +17,11 @@ if (isset($_SESSION["name"])) {
     if (isset($_POST["name"]) && isset($_POST["password"])) {
         $name = clean($_POST["name"]);
         $password = clean($_POST["password"]);
-        if (userExists($name)) {
-            echo "<br>";
-            echo "EXISTS";
-            if (authenticate($name, $password)) {
+        if (userExists($conn, $name)) {
+
+            if (authenticate($conn, $name, $password)) {
                 $_SESSION["name"] = $name;
-                header("Location: userMenu.php");
+                header("Location: userTests.php");
 
             } else {
                 $message = "Špatné přihlašovací údaje";

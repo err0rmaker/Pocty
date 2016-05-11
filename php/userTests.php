@@ -22,7 +22,7 @@ if (empty($_SESSION["name"])) {
         <div class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0 operationMode">
 
             <form action="userTest.php" method="post" id="form_operationMode">
-
+                <div class="row">
                 <div class="checkbox">
                     <input type="hidden" name="mode[plus]" value="0">
                     <label class="form-control-label  col-xs-3"><input type="checkbox" name="mode[plus]" value="1"><b>
@@ -48,22 +48,27 @@ if (empty($_SESSION["name"])) {
 
 
                 </div>
-                <div class="col-md-6 col-md-offset-3" id="testCount">
-                    <div class="form-group">
+                </div>
+
+                <div class="row">
+                    <div class="marginTop col-md-6 col-md-offset-3 " id="testCount">
+
+                        <div class="form-group">
                         <label for="count">Počet příkladů</label>
                         <input class="form-control" type="number" id="count" name="count">
                     </div>
+                        <div class="form-group">
                     <label for="submit">Vygenerovat</label>
                     <input class="btn btn-default" type="submit" id="submit">
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
+
 
 
 <?php
-require "../footer.php";
+require ROOT_PATH . "/footer.php";
 ?>

@@ -1,17 +1,29 @@
 <?php
 
-function DBConnect()
+
+class DOConnect
 {
-    require "../configuration.php";
+    public $conn;
 
-// Create connection
-    $conn = new mysqli($serverName, $userName, $password, $DBName);
+    public function __construct()
+    {
+        require __DIR__ . '/../../configuration.php';
 
-// Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+
+        $this->conn = new mysqli($serverName, $userName, $password, $DBName);
+
+
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
+        }
+
+
     }
-    //echo "Connected successfully";
 
-    return $conn;
+
+    public function getConnection()
+    {
+        return $this->conn;
+    }
+
 }
