@@ -25,7 +25,6 @@ class Authentication extends DBConnect
         $this->conn->close();
         return true;
     }
-        $this->conn->close();
 
     return false;
 
