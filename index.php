@@ -1,5 +1,12 @@
 <?php
 
+require_once __DIR__ .'/bootstrap.php';
 
-session_start();
-header('Location: php/training.php');
+switch ($_SERVER['SCRIPT_FILENAME']) {
+    case 'login.php': {
+        
+    }
+    case 'math.php': {
+        
+    }
+}

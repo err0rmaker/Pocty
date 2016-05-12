@@ -12,9 +12,9 @@ if (array_key_exists('name', $_SESSION)) {
     header('Location: userTests.php');
 } else {
     if (array_key_exists('name', $_POST) && array_key_exists('password', $_POST) && array_key_exists('password2', $_POST)) {
-        $name = $auth->clean($_POST['name']);
-        $password = $auth->clean($_POST['password']);
-        $password2 = $auth->clean($_POST['password2']);
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+        $password2 = $_POST['password2'];
 
 
         if ($password !== $password2) {
@@ -24,12 +24,12 @@ if (array_key_exists('name', $_SESSION)) {
 
 
         } else {
-            if ($auth->userExists($name)) {
-                $errorMsg = 'Uživatelské jméno už je zabráno';
-            } else {
+            try {
                 if ($auth->createUserAccount($name, $password)) {
                     header('Location: login.php');
                 }
+            } catch (RuntimeException $e) {
+                $message = $e->getMessage();
             }
 
         }

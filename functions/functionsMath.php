@@ -29,6 +29,8 @@ function generateNumbers($sign)
             $numbers['numberA'] = $tempA;
             $numbers['numberB'] = $tempB;
             break;
+        default:
+            throw new InvalidArgumentException('Neznámé znaménko');
     }
     return $numbers;
 }
@@ -38,16 +40,13 @@ function calculate($numberA, $numberB, $sign)
     switch ($sign) {
         case '+':
             return $numberA + $numberB;
-            break;
         case '-':
             return $numberA - $numberB;
-            break;
         case '*':
             return $numberA * $numberB;
-            break;
         case '/':
             return $numberA / $numberB;
-            break;
+        default:
+            throw new InvalidArgumentException('Neznámé znaménko');
     }
-
 }
