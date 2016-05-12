@@ -1,19 +1,19 @@
 <?php
 session_start();
-require "../header.php";
-require "inc/functionsMath.php";
-require "../configuration.php";
-if (!isset($_SESSION["numbers"])) {
-    $tempSignArr = array("+", "-", "*", "/");
+require __DIR__ . '../header.php';
+require __DIR__ . 'inc/functionsMath.php';
+require __DIR__ . '../configuration.php';
+if (!array_key_exists($_SESSION, 'numbers')) {
+    $tempSignArr = array('+', '-', '*', '/');
     $sign = generateSign($tempSignArr);
-    $_SESSION["sign"] = $sign;
-    $_SESSION["numbers"] = generateNumbers($sign);
+    $_SESSION['sign'] = $sign;
+    $_SESSION['numbers'] = generateNumbers($sign);
 
 
 }
 
 ?>
-<?php require "inc/topNav.php" ?>
+<?php require __DIR__ . 'inc/topNav.php' ?>
 
 
     <div class="container">
@@ -61,13 +61,13 @@ if (!isset($_SESSION["numbers"])) {
 
 
                     <div class="col-xs-2 col-xs-offset-1">
-                        <h1 id="numberA"><?php echo $_SESSION["numbers"]["numberA"] ?></h1>
+                        <h1 id="numberA"><?php echo $_SESSION['numbers']['numberA'] ?></h1>
                     </div>
                     <div class="col-xs-2">
-                        <h1 id="sign"><?php echo $_SESSION["sign"] ?></h1>
+                        <h1 id="sign"><?php echo $_SESSION['sign'] ?></h1>
                     </div>
                     <div class="col-xs-2">
-                        <h1 id="numberB"><?php echo $_SESSION["numbers"]["numberB"] ?></h1>
+                        <h1 id="numberB"><?php echo $_SESSION['numbers']['numberB'] ?></h1>
                     </div>
                     <div class="col-xs-2">
                         <h1 id="equalsSign">=</h1>
@@ -114,8 +114,8 @@ if (!isset($_SESSION["numbers"])) {
     <div class="container text-center ">
         <div class="row">
             <div class="col-xs-offset-4 col-xs-4 ">
-                <p>
-                <h2>Procvičování</h2></p>
+
+                <h2>Procvičování</h2>
             </div>
         </div>
         <div class="row">
@@ -131,5 +131,5 @@ if (!isset($_SESSION["numbers"])) {
 
 
 <?php
-require "../footer.php";
+require __DIR__ . '../footer.php';
 ?>

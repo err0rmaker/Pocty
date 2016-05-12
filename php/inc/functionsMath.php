@@ -1,26 +1,26 @@
 <?php
 function generateSign($signArray)
 {
-    return $signArray[mt_rand(0, sizeof($signArray) - 1)];
+    return $signArray[mt_rand(0, count($signArray) - 1)];
 }
 
 function generateNumbers($sign)
 {
     switch ($sign) {
-        case "+":
+        case '+':
             $numbers['numberA'] = mt_rand(1, 40);
             $numbers['numberB'] = mt_rand(1, 40);
             break;
 
-        case "-":
+        case '-':
             $numbers['numberA'] = mt_rand(1, 40);
             $numbers['numberB'] = mt_rand(1, 40);
             break;
-        case "*":
+        case '*':
             $numbers['numberA'] = mt_rand(1, 10);
             $numbers['numberB'] = mt_rand(1, 10);
             break;
-        case "/":
+        case '/':
             do {
                 $tempA = mt_rand(2, 81);
                 $tempB = mt_rand(2, 9);
@@ -36,17 +36,18 @@ function generateNumbers($sign)
 function calculate($numberA, $numberB, $sign)
 {
     switch ($sign) {
-        case "+":
+        case '+':
             return $numberA + $numberB;
             break;
-        case "-":
+        case '-':
             return $numberA - $numberB;
             break;
-        case "*":
+        case '*':
             return $numberA * $numberB;
             break;
-        case "/":
+        case '/':
             return $numberA / $numberB;
             break;
     }
+
 }

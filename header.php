@@ -7,9 +7,8 @@
     <title>Pocty</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../font-awesome-4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome-4.6.1/css/font-awesome.min.css">
 
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 <body id="bootstrap-overrides">
 

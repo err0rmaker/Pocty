@@ -2,40 +2,40 @@
 function filterOperations()
 {
     $signArr = array(
-        "+" => true,
-        "-" => true,
-        "*" => true,
-        "/" => true,
+        '+' => true,
+        '-' => true,
+        '*' => true,
+        '/' => true,
     );
-    if (empty($_POST["mode_plus"]) && empty($_POST["mode_minus"]) && empty($_POST["mode_multiply"]) && empty($_POST["mode_divide"])) {
+    if (empty($_POST['mode_plus']) && empty($_POST['mode_minus']) && empty($_POST['mode_multiply']) && empty($_POST['mode_divide'])) {
 
 
-        $tempSignArr = array("+", "-", "*", "/");
+        $tempSignArr = array('+', '-', '*', '/');
 
 
     }
-    if (isset($_POST["mode_plus"])) {
-        $signArr["+"] = true;
+    if (isset($_POST['mode_plus'])) {
+        $signArr['+'] = true;
     } else {
-        $signArr["+"] = false;
+        $signArr['+'] = false;
 
     }
-    if (isset($_POST["mode_minus"])) {
-        $signArr["-"] = true;
+    if (isset($_POST['mode_minus'])) {
+        $signArr['-'] = true;
     } else {
-        $signArr["-"] = false;
+        $signArr['-'] = false;
 
     }
-    if (isset($_POST["mode_multiply"])) {
-        $signArr["*"] = true;
+    if (isset($_POST['mode_multiply'])) {
+        $signArr['*'] = true;
     } else {
-        $signArr["*"] = false;
+        $signArr['*'] = false;
 
     }
-    if (isset($_POST["mode_divide"])) {
-        $signArr["/"] = true;
+    if (isset($_POST['mode_divide'])) {
+        $signArr['/'] = true;
     } else {
-        $signArr["/"] = false;
+        $signArr['/'] = false;
 
     }
 

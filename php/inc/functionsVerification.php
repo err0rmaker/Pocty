@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../../configuration.php';
-require ROOT_PATH . "/php/inc/passwordLib/passwordLib.php";
+require __DIR__ . '/passwordLib/passwordLib.php';
 
 
 function authenticate($conn, $name, $password)
@@ -12,7 +12,7 @@ function authenticate($conn, $name, $password)
     $sql = "SELECT password FROM soupak_uzivatele WHERE name LIKE '$name'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    if (password_verify($password, $row["password"])) {
+    if (password_verify($password, $row['password'])) {
         $conn->close();
         return true;
     }
@@ -29,7 +29,7 @@ function userExists($conn, $name)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        if ($row["name"] == $name) {
+        if ($row['name'] == $name) {
             return true;
         }
     }

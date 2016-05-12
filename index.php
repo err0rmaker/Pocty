@@ -2,4 +2,4 @@
 
 
 session_start();
-header("Location: php/training.php");
+header('Location: php/training.php');

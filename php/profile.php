@@ -1,19 +1,19 @@
 <?php
 session_start();
-require "../configuration.php";
+require __DIR__ . '../configuration.php';
 
-if (!isset($_SESSION["name"])) {
-    header("Location: login.php");
+if (!isset($_SESSION['name'])) {
+    header('Location: login.php');
 }
-require "../header.php";
+require __DIR__ . '../header.php';
 
 
 ?>
-<?php require "inc/userTopNav.php" ?>
+<?php require __DIR__ . 'inc/userTopNav.php' ?>
 
     <h1>profil</h1>
 
 
 <?php
-require "../footer.php";
+require __DIR__ . '../footer.php';
 ?>

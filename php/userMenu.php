@@ -1,18 +1,18 @@
 <?php
 session_start();
-require "../configuration.php";
+require __DIR__ . '../configuration.php';
 
-if (!isset($_SESSION["name"])) {
-    header("Location: login.php");
+if (!isset($_SESSION['name'])) {
+    header('Location: login.php');
 }
-require "../header.php";
+require __DIR__ . '../header.php';
 
 
 ?>
     <body id="bootstrap-overrides">
-<?php require "inc/userTopNav.php" ?>
+<?php require __DIR__ . 'inc/userTopNav.php' ?>
 
 
 <?php
-require "../footer.php";
+require __DIR__ . '../footer.php';
 ?>

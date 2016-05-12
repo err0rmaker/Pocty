@@ -1,14 +1,14 @@
 <?php
 session_start();
-require "../header.php";
-require "inc/functionsMath.php";
-require "../configuration.php";
-if (empty($_SESSION["name"])) {
-    header("Location: login.php");
+require __DIR__ . '../header.php';
+require __DIR__ . 'inc/functionsMath.php';
+require __DIR__ . '../configuration.php';
+if (empty($_SESSION['name'])) {
+    header('Location: login.php');
 }
 
 ?>
-<?php require "inc/userTopNav.php" ?>
+<?php require __DIR__ . 'inc/userTopNav.php' ?>
     <div class="container text-center ">
         <div class="row">
             <div class="col-xs-offset-4 col-xs-4 ">
@@ -70,5 +70,5 @@ if (empty($_SESSION["name"])) {
 
 
 <?php
-require ROOT_PATH . "/footer.php";
+require __DIR__ . '/../footer.php';
 ?>

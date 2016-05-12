@@ -1,20 +1,21 @@
 <?php
 session_start();
 require __DIR__ . '/../configuration.php';
-require ROOT_PATH . "/header.php";
-require ROOT_PATH . "/php/inc/functionsMath.php";
+require __DIR__ . '/../header.php';
+require __DIR__ . '/inc/functionsMath.php';
 
-if (empty($_SESSION["name"])) {
-    header("Location: login.php");
+if (empty($_SESSION['name'])) {
+    header('Location: login.php');
 }
 
 ?>
-<?php require ROOT_PATH . "/php/inc/userTopNav.php" ?>
+<?php require __DIR__ . '/inc/userTopNav.php' ?>
     <div class="container text-center ">
         <div class="row">
             <div class="col-xs-offset-4 col-xs-4 ">
-                <p>
-                <h3>Test</h3></p>
+
+                <h3>Test</h3>
+
             </div>
         </div>
     </div>
@@ -48,20 +49,20 @@ if (empty($_SESSION["name"])) {
                         echo '</div>';
                     }
                     echo "<label for='submitTest'>Zkontrolovat</label>";
-                    echo "<input type='submit' id='submitTest'>";
-                    echo "</form>";
+                    echo "<input class='btn btn-default' type='submit' id='submitTest'>";
+                    echo '</form>';
                 }
 
 
                 if (array_key_exists('result', $_POST) and array_key_exists('previous', $_POST)) {
-                    $result = $_POST["result"];
+                    $result = $_POST['result'];
                     $score = 0;
-                    $previous = $_POST["previous"];
+                    $previous = $_POST['previous'];
                     $scoreMax = count($previous);
                     echo "<table class='table'>";
-                    echo "<tr><th>Příklad</th><th>Zprávný výsledek</th><th>Váš výsledek</th><tr>";
+                    echo '<tr><th>Příklad</th><th>Zprávný výsledek</th><th>Váš výsledek</th><tr>';
                     for ($i = 0, $iMax = count($previous); $i < $iMax; $i++) {
-                        $prevArr = explode("|", $previous[$i]);
+                        $prevArr = explode('|', $previous[$i]);
                         $numberA = $prevArr[0];
                         $numberB = $prevArr[1];
                         $sign = $prevArr[2];
@@ -74,8 +75,8 @@ if (empty($_SESSION["name"])) {
 
 
                     }
-                    echo "</table>";
-                    echo "<h4>Procento zprávných výsledků: " . ($score / $scoreMax) * 100 . " %</h4>";
+                    echo '</table>';
+                    echo '<h4>Procento zprávných výsledků: ' . ($score / $scoreMax) * 100 . ' %</h4>';
                 }
                 ?>
 
@@ -90,23 +91,23 @@ function generateTestItem()
 {
     $tempSignArr = [];
 
-    if (isset($_POST["mode"])) {
-        $mode = $_POST["mode"];
+    if (isset($_POST['mode'])) {
+        $mode = $_POST['mode'];
         unset($tempSignArr);
         foreach ($mode as $sign => $value) {
             if ($value == 1) {
                 switch ($sign) {
                     case 'plus':
-                        $tempSignArr[] = "+";
+                        $tempSignArr[] = '+';
                         break;
                     case 'minus':
-                        $tempSignArr[] = "-";
+                        $tempSignArr[] = '-';
                         break;
                     case 'multiply':
-                        $tempSignArr[] = "*";
+                        $tempSignArr[] = '*';
                         break;
                     case 'divide':
-                        $tempSignArr[] = "/";
+                        $tempSignArr[] = '/';
                         break;
                 }
             }
@@ -114,7 +115,7 @@ function generateTestItem()
 
     }
     if (!isset($tempSignArr)) {
-        $tempSignArr = array("+", "+", "*", "/");
+        $tempSignArr = array('+', '+', '*', '/');
     }
 
     $sign = generateSign($tempSignArr);
@@ -125,5 +126,5 @@ function generateTestItem()
 
 }
 
-require ROOT_PATH . "/footer.php";
+require __DIR__ . '/../footer.php';
 ?>

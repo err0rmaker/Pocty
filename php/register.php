@@ -1,42 +1,42 @@
 <?php
 session_start();
-require "../header.php";
-require "inc/topNav.php";
-require "functions.php";
+require __DIR__ . '../header.php';
+require __DIR__ . 'inc/topNav.php';
+require __DIR__ . 'functions.php';
 
-$errorMsg = "";
-$message = "";
+$errorMsg = '';
+$message = '';
 $DBC = new DOConnect();
 $conn = $DBC->getConnection();
-if (isset($_SESSION["name"])) {
-    header("Location: userTests.php");
+if (array_key_exists($_SESSION, 'name')) {
+    header('Location: userTests.php');
 } else {
-    if (isset($_POST["name"]) && isset($_POST["password"]) && isset($_POST["password2"])) {
-        $name = clean($_POST["name"]);
-        $password = clean($_POST["password"]);
-        $password2 = clean($_POST["password2"]);
+    if (array_key_exists($_POST, 'name') && array_key_exists($_POST, 'password') && array_key_exists($_POST, 'password2')) {
+        $name = clean($_POST['name']);
+        $password = clean($_POST['password']);
+        $password2 = clean($_POST['password2']);
 
 
-        if ($password != $password2) {
-            $errorMsg = "Hesla se neshodují";
+        if ($password !== $password2) {
+            $errorMsg = 'Hesla se neshodují';
         } elseif (strlen($password) < 8) {
-            $errorMsg = "Heslo musí být alespoň 8 znaků dlouhé";
+            $errorMsg = 'Heslo musí být alespoň 8 znaků dlouhé';
 
 
         } else {
-            if (userExists($name)) {
-                $errorMsg = "Uživatelské jméno už je zabráno";
+            if (userExists($conn, $name)) {
+                $errorMsg = 'Uživatelské jméno už je zabráno';
             } else {
-                $errormsg = "";
-                if (createUserAccount($name, $password)) {
-                    $message = "Registrace proběhla v pořádku." . "<a href = 'login.php.'>Můžete se teď přihlásit</a>";
-                    header("Location: login.php");
+                $errormsg = '';
+                if (createUserAccount($conn, $name, $password)) {
+                    $message = 'Registrace proběhla v pořádku.' . "<a href = 'login.php.'>Můžete se teď přihlásit</a>";
+                    header('Location: login.php');
                 }
             }
 
         }
     } else {
-        $errorMsg = "Vyplňte všechna pole";
+        $errorMsg = 'Vyplňte všechna pole';
     }
 }
 
@@ -73,6 +73,6 @@ if (isset($_SESSION["name"])) {
         </div>
     </div>
 <?php
-require "../footer.php";
+require __DIR__ . '../footer.php';
 
 ?>

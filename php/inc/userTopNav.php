@@ -5,10 +5,10 @@
                 <p>přihlášen jako:
                     <a href="profile.php">
                         <?php
-                        if (isset($_SESSION['name'])) {
-                            echo $_SESSION["name"];
-                        } else {
-                        } ?>
+                        if (array_key_exists($_SESSION, 'name')) {
+                            echo $_SESSION['name'];
+                        }
+                        ?>
                     </a>
                 </p>
             </div>

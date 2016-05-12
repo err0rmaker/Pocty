@@ -25,15 +25,14 @@
 }
 
 #bootstrap-overrides {
-  font-family: Verdana;
+  font-family: sans-serif Verdana;
   color: rgba(43, 43, 43, 0.72);
 }
 
 body {
-  background: url("../images/background_2.svg") fixed center no-repeat;
+  background: url("../images/background_2.svg") no-repeat fixed center;
   margin: 0 auto;
   height: auto;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -119,7 +118,7 @@ body {
 }
 
 .marginTop {
-  margin-top: 20px;
+  margin-top: 21px;
 }
 
 /*# sourceMappingURL=style.css.map */

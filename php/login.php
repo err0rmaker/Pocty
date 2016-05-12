@@ -2,35 +2,35 @@
 session_start();
 require __DIR__ . '/../configuration.php';
 
-require ROOT_PATH . "/header.php";
-require ROOT_PATH . "/php/inc/topNav.php";
-require ROOT_PATH . "/php/functions.php";
-require_once ROOT_PATH . "/php/inc/DBConnect.php";
-$message = "";
+require __DIR__ . '/../header.php';
+require __DIR__ . '/inc/topNav.php';
+require __DIR__ . '/functions.php';
+require_once __DIR__ . '/inc/DBConnect.php';
+$message = '';
 
 $DBC = new DOConnect();
 $conn = $DBC->getConnection();
 
-if (isset($_SESSION["name"])) {
-    header("Location: userTests.php");
+if (array_key_exists($_SESSION, 'name')) {
+    header('Location: userTests.php');
 } else {
-    if (isset($_POST["name"]) && isset($_POST["password"])) {
-        $name = clean($_POST["name"]);
-        $password = clean($_POST["password"]);
+    if (array_key_exists($_POST, 'name') && array_key_exists($_POST, 'password')) {
+        $name = clean($_POST['name']);
+        $password = clean($_POST['password']);
         if (userExists($conn, $name)) {
 
             if (authenticate($conn, $name, $password)) {
-                $_SESSION["name"] = $name;
-                header("Location: userTests.php");
+                $_SESSION['name'] = $name;
+                header('Location: userTests.php');
 
             } else {
-                $message = "Špatné přihlašovací údaje";
+                $message = 'Špatné přihlašovací údaje';
             }
 
 
         }
     } else {
-        $message = "Vyplňte všechna pole";
+        $message = 'Vyplňte všechna pole';
     }
 }
 
@@ -63,6 +63,6 @@ if (isset($_SESSION["name"])) {
         </div>
     </div>
 <?php
-require "../footer.php";
+require __DIR__ . '../footer.php';
 
 ?>
