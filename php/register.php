@@ -1,20 +1,20 @@
 <?php
 session_start();
-require __DIR__ . '../header.php';
-require __DIR__ . 'inc/topNav.php';
-require __DIR__ . 'functions.php';
+require __DIR__ . '/../header.php';
+require __DIR__ . '/inc/topNav.php';
+require __DIR__ . '/functions.php';
 
 $errorMsg = '';
 $message = '';
-$DBC = new DOConnect();
-$conn = $DBC->getConnection();
-if (array_key_exists($_SESSION, 'name')) {
+$auth = new Authentication();
+
+if (array_key_exists('name', $_SESSION)) {
     header('Location: userTests.php');
 } else {
-    if (array_key_exists($_POST, 'name') && array_key_exists($_POST, 'password') && array_key_exists($_POST, 'password2')) {
-        $name = clean($_POST['name']);
-        $password = clean($_POST['password']);
-        $password2 = clean($_POST['password2']);
+    if (array_key_exists('name', $_POST) && array_key_exists('password', $_POST) && array_key_exists('password2', $_POST)) {
+        $name = $auth->clean($_POST['name']);
+        $password = $auth->clean($_POST['password']);
+        $password2 = $auth->clean($_POST['password2']);
 
 
         if ($password !== $password2) {
@@ -24,12 +24,10 @@ if (array_key_exists($_SESSION, 'name')) {
 
 
         } else {
-            if (userExists($conn, $name)) {
+            if ($auth->userExists($name)) {
                 $errorMsg = 'Uživatelské jméno už je zabráno';
             } else {
-                $errormsg = '';
-                if (createUserAccount($conn, $name, $password)) {
-                    $message = 'Registrace proběhla v pořádku.' . "<a href = 'login.php.'>Můžete se teď přihlásit</a>";
+                if ($auth->createUserAccount($name, $password)) {
                     header('Location: login.php');
                 }
             }
@@ -73,6 +71,6 @@ if (array_key_exists($_SESSION, 'name')) {
         </div>
     </div>
 <?php
-require __DIR__ . '../footer.php';
+require __DIR__ . '/../footer.php';
 
 ?>

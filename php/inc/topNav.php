@@ -5,7 +5,7 @@
                 <p>přihlášen jako:
                     <a href="profile.php">
                         <?php
-                        if (isset($_SESSION['name'])) {
+                        if (array_key_exists('name', $_SESSION)) {
                             echo $_SESSION['name'];
                         }
                         ?>

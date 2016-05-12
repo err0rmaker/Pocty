@@ -1,25 +1,23 @@
 <?php
 session_start();
 require __DIR__ . '/../configuration.php';
-
 require __DIR__ . '/../header.php';
 require __DIR__ . '/inc/topNav.php';
 require __DIR__ . '/functions.php';
-require_once __DIR__ . '/inc/DBConnect.php';
+
 $message = '';
 
-$DBC = new DOConnect();
-$conn = $DBC->getConnection();
+$auth = new Authentication();
 
-if (array_key_exists($_SESSION, 'name')) {
+if (array_key_exists('name', $_SESSION)) {
     header('Location: userTests.php');
 } else {
-    if (array_key_exists($_POST, 'name') && array_key_exists($_POST, 'password')) {
-        $name = clean($_POST['name']);
-        $password = clean($_POST['password']);
-        if (userExists($conn, $name)) {
+    if (array_key_exists('name', $_POST) && array_key_exists('password', $_POST)) {
+        $name = $auth->clean($_POST['name']);
+        $password = $auth->clean($_POST['password']);
+        if ($auth->userExists($name)) {
 
-            if (authenticate($conn, $name, $password)) {
+            if ($auth->authenticate($name, $password)) {
                 $_SESSION['name'] = $name;
                 header('Location: userTests.php');
 
@@ -63,6 +61,6 @@ if (array_key_exists($_SESSION, 'name')) {
         </div>
     </div>
 <?php
-require __DIR__ . '../footer.php';
+require __DIR__ . '/../footer.php';
 
 ?>

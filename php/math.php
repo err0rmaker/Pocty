@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once __DIR__ . 'inc/filterOperation.php';
-include_once __DIR__ . 'inc/functionsMath.php';
+include_once __DIR__ . '/inc/filterOperation.php';
+include_once __DIR__ . '/inc/functionsMath.php';
 
 $numberA = $_SESSION['numbers']['numberA'];
 $numberB = $_SESSION['numbers']['numberB'];
@@ -15,7 +15,7 @@ $json = array(
 );
 
 
-if (array_key_exists($_POst, 'result')) {
+if (array_key_exists('result', $POST)) {
     $result = $_POST['result'];
     switch ($sign) {
         case '+':

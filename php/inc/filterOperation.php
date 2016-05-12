@@ -7,32 +7,28 @@ function filterOperations()
         '*' => true,
         '/' => true,
     );
-    if (empty($_POST['mode_plus']) && empty($_POST['mode_minus']) && empty($_POST['mode_multiply']) && empty($_POST['mode_divide'])) {
-
-
+    if (!array_key_exists($_POST, 'mode_plus') && !array_key_exists($_POST, 'mode_minus') && !array_key_exists($_POST, 'mode_multiply') && !array_key_exists($_POST, 'mode_divide')) {
         $tempSignArr = array('+', '-', '*', '/');
-
-
     }
-    if (isset($_POST['mode_plus'])) {
+    if (array_key_exists($_POST, 'mode_plus')) {
         $signArr['+'] = true;
     } else {
         $signArr['+'] = false;
 
     }
-    if (isset($_POST['mode_minus'])) {
+    if (array_key_exists($_POST, 'mode_minus')) {
         $signArr['-'] = true;
     } else {
         $signArr['-'] = false;
 
     }
-    if (isset($_POST['mode_multiply'])) {
+    if (array_key_exists($_POST, 'mode_multiply')) {
         $signArr['*'] = true;
     } else {
         $signArr['*'] = false;
 
     }
-    if (isset($_POST['mode_divide'])) {
+    if (array_key_exists($_POST, 'mode_divide')) {
         $signArr['/'] = true;
     } else {
         $signArr['/'] = false;

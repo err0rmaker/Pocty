@@ -5,15 +5,13 @@
                 <p>přihlášen jako:
                     <a href="profile.php">
                         <?php
-                        if (array_key_exists($_SESSION, 'name')) {
+                        if (array_key_exists('name', $_SESSION)) {
                             echo $_SESSION['name'];
                         }
                         ?>
                     </a>
                 </p>
             </div>
-
-
             <div class="col-lg-2 col-xs-3 topNavElement">
                 <a href="userTests.php">
                     <button class="btn btn-default">Testy</button>

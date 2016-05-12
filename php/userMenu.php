@@ -2,17 +2,12 @@
 session_start();
 require __DIR__ . '../configuration.php';
 
-if (!isset($_SESSION['name'])) {
+if (!array_key_exists('name', $_SESSION)) {
     header('Location: login.php');
 }
 require __DIR__ . '../header.php';
 
 
-?>
-    <body id="bootstrap-overrides">
-<?php require __DIR__ . 'inc/userTopNav.php' ?>
-
-
-<?php
+//
+require __DIR__ . '/inc/userTopNav.php';
 require __DIR__ . '../footer.php';
-?>

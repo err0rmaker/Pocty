@@ -27,7 +27,7 @@ if (empty($_SESSION['name'])) {
 
                 <?php
 
-                if (isset($_POST['count'])) {
+                if (array_key_exists('count', $_POST)) {
                     $count = $_POST['count'];
                     $testItemsI = array();
                     for ($i = 0; $i < $count; $i++) {
@@ -91,7 +91,7 @@ function generateTestItem()
 {
     $tempSignArr = [];
 
-    if (isset($_POST['mode'])) {
+    if (array_key_exists('mode', $_POST)) {
         $mode = $_POST['mode'];
         unset($tempSignArr);
         foreach ($mode as $sign => $value) {
