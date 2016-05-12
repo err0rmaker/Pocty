@@ -5,3 +5,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 /soupak_pocty/css/font-awesome-4.6.1
 /images
+.idea
+.sass-cache

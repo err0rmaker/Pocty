@@ -1,14 +1,14 @@
 <?php
 function filterOperations()
 {
-    $signArr = array(
+    $signArr = [
         '+' => true,
         '-' => true,
         '*' => true,
         '/' => true,
-    );
+    ];
     if (!array_key_exists($_POST, 'mode_plus') && !array_key_exists($_POST, 'mode_minus') && !array_key_exists($_POST, 'mode_multiply') && !array_key_exists($_POST, 'mode_divide')) {
-        $tempSignArr = array('+', '-', '*', '/');
+        $tempSignArr = ['+', '-', '*', '/'];
     }
     if (array_key_exists($_POST, 'mode_plus')) {
         $signArr['+'] = true;
@@ -34,14 +34,13 @@ function filterOperations()
         $signArr['/'] = false;
 
     }
-
+    $tempSignArr = [];
 
     foreach ($signArr as $key => $value) {
         if ($value == true) {
             $tempSignArr[] = $key;
         }
-
-
     }
+    
     return $tempSignArr;
 }
