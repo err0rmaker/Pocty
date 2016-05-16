@@ -51,7 +51,7 @@ $(document).ready(function () {
 
         console.log(jsonData);
         $.ajax({
-            url: '../php/math.php', type: "POST", data: jsonData,
+            url: 'functions/math.php', type: "POST", data: jsonData,
             success: function (data) {
                 console.log(data);
                 resultData = JSON.parse(data);

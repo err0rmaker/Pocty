@@ -7,34 +7,35 @@ function filterOperations()
         '*' => true,
         '/' => true,
     ];
-    if (!array_key_exists($_POST, 'mode_plus') && !array_key_exists($_POST, 'mode_minus') && !array_key_exists($_POST, 'mode_multiply') && !array_key_exists($_POST, 'mode_divide')) {
+    $tempSignArr = [];
+    if (!array_key_exists('mode_plus', $_POST) && !array_key_exists('mode_minus', $_POST) && !array_key_exists('mode_multiply', $_POST) && !array_key_exists('mode_divide', $_POST)) {
         $tempSignArr = ['+', '-', '*', '/'];
     }
-    if (array_key_exists($_POST, 'mode_plus')) {
+    if (array_key_exists('mode_plus', $_POST)) {
         $signArr['+'] = true;
     } else {
         $signArr['+'] = false;
 
     }
-    if (array_key_exists($_POST, 'mode_minus')) {
+    if (array_key_exists('mode_minus', $_POST)) {
         $signArr['-'] = true;
     } else {
         $signArr['-'] = false;
 
     }
-    if (array_key_exists($_POST, 'mode_multiply')) {
+    if (array_key_exists('mode_multiply', $_POST)) {
         $signArr['*'] = true;
     } else {
         $signArr['*'] = false;
 
     }
-    if (array_key_exists($_POST, 'mode_divide')) {
+    if (array_key_exists('mode_divide', $_POST)) {
         $signArr['/'] = true;
     } else {
         $signArr['/'] = false;
 
     }
-    $tempSignArr = [];
+
 
     foreach ($signArr as $key => $value) {
         if ($value == true) {

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once __DIR__ . '/inc/filterOperation.php';
-include_once __DIR__ . '/inc/functionsMath.php';
+require_once __DIR__ . '/filterOperation.php';
+require_once __DIR__ . '/functionsMath.php';
 
 $numberA = $_SESSION['numbers']['numberA'];
 $numberB = $_SESSION['numbers']['numberB'];
@@ -15,38 +15,39 @@ $json = array(
 );
 
 
-if (array_key_exists('result', $POST)) {
+if (array_key_exists('result', $_POST)) {
     $result = $_POST['result'];
     switch ($sign) {
         case '+':
-            if ((int)$numberA + (int)$numberB == (int)$result)
+            if ((int)$numberA + (int)$numberB == (int)$result) {
                 $json['result'] = true;
+            }
 
             $json['int_result'] = (int)$numberA + (int)$numberB;
-            
-
 
             break;
 
         case '-':
-            if ((int)$numberA - (int)$numberB == (int)$result)
+            if ((int)$numberA - (int)$numberB == (int)$result) {
                 $json['result'] = true;
+            }
 
             $json['int_result'] = (int)$numberA - (int)$numberB;
 
             break;
         case '*':
-            if ((int)$numberA * (int)$numberB == (int)$result)
+            if ((int)$numberA * (int)$numberB == (int)$result) {
                 $json['result'] = true;
-
+            }
             $json['int_result'] = (int)$numberA * (int)$numberB;
 
 
             break;
         case '/':
-            if ((double)$numberA / (double)$numberB == (double)$result)
+            if ((double)$numberA / (double)$numberB == (double)$result) {
                 $json['result'] = true;
 
+            }
 
             $json['int_result'] = (double)$numberA / (double)$numberB;
 

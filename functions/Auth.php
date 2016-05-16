@@ -25,10 +25,35 @@ class Authentication
         $sql = "SELECT password FROM {$this->table} WHERE name LIKE '$name'";
         $result = $this->conn->query($sql);
         $row = $result->fetch_assoc();
+        echo $name;
         if (password_verify($password, $row['password'])) {
             return true;
         }
 
+        return false;
+    }
+
+    private function clean($input)
+    {
+        $input = strip_tags($input);
+        $input = stripslashes($input);
+        return $input;
+    }
+
+    public function createUserAccount($name, $password)
+    {
+        if ($this->userExists($name)) {
+            throw new RuntimeException('Uzivatel jiz existuje');
+        }
+
+        //obrana proti sql injekci
+        $name = $this->conn->real_escape_string(strtolower($this->clean($name)));
+        $password = $this->conn->real_escape_string($this->clean($password));
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT into {$this->table} (name, password) VALUES ('$name', '$password')";
+        if ($this->conn->query($sql)) {
+            return true;
+        }
         return false;
     }
 
@@ -41,29 +66,6 @@ class Authentication
             throw new Exception('Nalezeno více uživatelů se stejným jménem');
         }
         return $result->num_rows === 1;
-    }
-
-    public function createUserAccount($name, $password)
-    {
-        if ($this->userExists($name)) {
-            throw new RuntimeException('Uzivatel jiz existuje');
-        }
-        //obrana proti sql injekci
-        $name = $this->conn->real_escape_string(strtolower($this->clean($name)));
-        $password = $this->conn->real_escape_string($this->clean($password));
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT into {$this->table} (name, password) VALUES ('$name', '$password')";
-        if ($this->conn->query($sql)) {
-            return true;
-        }
-        return false;
-    }
-
-    private function clean($input)
-    {
-        $input = strip_tags($input);
-        $input = stripslashes($input);
-        return $input;
     }
 
     public function isGuest()

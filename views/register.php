@@ -1,44 +1,5 @@
-<?php
-session_start();
-require __DIR__ . '/../header.php';
-require __DIR__ . '/inc/topNav.php';
-require __DIR__ . '/functions.php';
-
-$errorMsg = '';
-$message = '';
-$auth = new Authentication();
-
-if (array_key_exists('name', $_SESSION)) {
-    header('Location: userTests.php');
-} else {
-    if (array_key_exists('name', $_POST) && array_key_exists('password', $_POST) && array_key_exists('password2', $_POST)) {
-        $name = $_POST['name'];
-        $password = $_POST['password'];
-        $password2 = $_POST['password2'];
 
 
-        if ($password !== $password2) {
-            $errorMsg = 'Hesla se neshodují';
-        } elseif (strlen($password) < 8) {
-            $errorMsg = 'Heslo musí být alespoň 8 znaků dlouhé';
-
-
-        } else {
-            try {
-                if ($auth->createUserAccount($name, $password)) {
-                    header('Location: login.php');
-                }
-            } catch (RuntimeException $e) {
-                $message = $e->getMessage();
-            }
-
-        }
-    } else {
-        $errorMsg = 'Vyplňte všechna pole';
-    }
-}
-
-?>
 
     <div class="container">
         <div class="row">
@@ -71,6 +32,6 @@ if (array_key_exists('name', $_SESSION)) {
         </div>
     </div>
 <?php
-require __DIR__ . '/../footer.php';
+require __DIR__ . '/../bootstrap.end.php';
 
 ?>

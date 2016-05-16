@@ -1,8 +1,9 @@
 <?php
 
 session_start();
-
+define('BASE_URL', $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/');
 require_once __DIR__ . '/functions/DBConnect.php';
+require_once __DIR__ . '/functions/functionsMath.php';
 
 require_once __DIR__ . '/configuration.php';
 
@@ -12,8 +13,15 @@ require_once __DIR__ . '/lib/passwordLib/passwordLib.php';
 require_once __DIR__ . '/functions/Auth.php';
 $auth = new Authentication($conn);
 
-$_SERVER['SCRIPT_FILENAME'] !== 'login.php' && $auth->isGuest() && header('location: login.php');
+//$_SERVER['SCRIPT_FILENAME'] !== 'login.php' && $auth->isGuest() && header('location: login.php');
+//if($_SERVER['SCRIPT_FILENAME']){}
 
+switch ($_SERVER['SCRIPT_FILENAME']) {
+    case 'index.php':
+        header('location: training.php');
+        break;
+
+}
 include __DIR__ . '/layout/head.php';
 
 

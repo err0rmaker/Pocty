@@ -1,19 +1,4 @@
-<?php
-session_start();
-require __DIR__ . '/../header.php';
-require __DIR__ . '/inc/functionsMath.php';
-require __DIR__ . '/../configuration.php';
-if (!array_key_exists('numbers', $_SESSION)) {
-    $tempSignArr = array('+', '-', '*', '/');
-    $sign = generateSign($tempSignArr);
-    $_SESSION['sign'] = $sign;
-    $_SESSION['numbers'] = generateNumbers($sign);
 
-
-}
-
-?>
-<?php require __DIR__ . '/inc/topNav.php' ?>
 
 
     <div class="container">
@@ -131,5 +116,5 @@ if (!array_key_exists('numbers', $_SESSION)) {
 
 
 <?php
-require __DIR__ . '/../footer.php';
+require_once __DIR__ . '/../bootstrap.end.php';
 ?>
