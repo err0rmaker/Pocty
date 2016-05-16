@@ -73,4 +73,10 @@ class Authentication
         return !array_key_exists('name', $_SESSION);
     }
 
+    public function getLoggedInUserName()
+    {
+        return $_SESSION['name'];
+
+    }
+
 }

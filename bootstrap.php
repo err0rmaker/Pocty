@@ -4,7 +4,7 @@ session_start();
 define('BASE_URL', $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/');
 require_once __DIR__ . '/functions/DBConnect.php';
 require_once __DIR__ . '/functions/functionsMath.php';
-
+echo $_SERVER['SERVER_NAME'];
 require_once __DIR__ . '/configuration.php';
 
 $conn = new DBConnect(DB_SERVER, DB_USERNAME, DB_PASS, DB_NAME);

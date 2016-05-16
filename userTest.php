@@ -19,53 +19,83 @@ require_once __DIR__ . '/bootstrap.php';
 
                 if (array_key_exists('count', $_POST)) {
                     $count = $_POST['count'];
-                    $testItemsI = array();
-                    for ($i = 0; $i < $count; $i++) {
-                        $testItemsI[$i] = generateTestItem();
-                    }
+                    $testItems = [];
+                    if (!array_key_exists('testItems', $_SESSION)) {
 
+
+                        for ($i = 0; $i < $count; $i++) {
+                            $testItems[] = generateTestItem();
+                        }
+                        $_SESSION['testItems'] = $testItems;
+                    }
+                    $testItems = $_SESSION['testItems'];
+                    echo '<pre>';
+                    //var_dump($testItems[0]);
+                    echo '<pre>';
                     echo "<form method='post' action='userTest.php'>";
-                    for ($i = 0, $iMax = count($testItemsI); $i < $iMax; $i++) {
-                        $numberA = $testItemsI[$i][0];
-                        $numberB = $testItemsI[$i][1];
-                        $sign = $testItemsI[$i][2];
+                    for ($i = 0, $iMax = count($testItems); $i < $iMax; $i++) {
+                        $numberA = $testItems[$i][0];
+                        $numberB = $testItems[$i][1];
+                        $sign = $testItems[$i][2];
+
+
                         echo "<div class='form-group'>";
                         echo "<label for=testItem>{$numberA} {$sign} {$numberB}</label>";
                         echo "<input  class='form-control' type='number' name='result[]' id = 'testItem'>";
-                        echo "<input type='hidden' name='previous[]' value='{$numberA}|{$numberB}|{$sign}'>";
-
-
+                        //echo "<input type='hidden' name='previous[]' value='{$numberA}|{$numberB}|{$sign}'>
                         echo '</div>';
+
                     }
-                    echo "<label for='submitTest'>Zkontrolovat</label>";
-                    echo "<input class='btn btn-default' type='submit' id='submitTest'>";
-                    echo '</form>';
+                    ?>
+                    <label for='submitTest'>Zkontrolovat</label>
+                    <input class='btn btn-default' type='submit' id='submitTest'>
+                    </form>
+                    <?php
+
                 }
+                if (array_key_exists('testItems', $_SESSION)) {
+                if (array_key_exists('result', $_POST)) {
 
 
-                if (array_key_exists('result', $_POST) and array_key_exists('previous', $_POST)) {
-                    $result = $_POST['result'];
-                    $score = 0;
-                    $previous = $_POST['previous'];
-                    $scoreMax = count($previous);
-                    echo "<table class='table'>";
-                    echo '<tr><th>Příklad</th><th>Zprávný výsledek</th><th>Váš výsledek</th><tr>';
-                    for ($i = 0, $iMax = count($previous); $i < $iMax; $i++) {
-                        $prevArr = explode('|', $previous[$i]);
-                        $numberA = $prevArr[0];
-                        $numberB = $prevArr[1];
-                        $sign = $prevArr[2];
-                        $calculatedResult = calculate($numberA, $numberB, $sign);
-                        if ($calculatedResult == $result[$i]) {
+                $result = $_POST['result'];
+                $score = 0;
+                $previous = $_SESSION['testItems'];
+                //echo '<pre>';
+                //print_r($previous);
+                //echo '</pre>';
+                unset($_SESSION['testItems']);
+                $scoreMax = count($previous);
+                //var_dump($previous);
+                ?>
+                <table class='table'>
+                    <tr>
+                        <th>Příklad</th>
+                        <th>Zprávný výsledek</th>
+                        <th>Váš výsledek</th>
+                    <tr>
+                        <?php
 
-                            $score++;
+
+                        foreach ($previous as $key => $tempTestItem) {
+                            list($numberA, $numberB, $sign) = $tempTestItem;
+
+                            $calculatedResult = calculate($numberA, $numberB, $sign);
+                            if ($calculatedResult === $result[$key]) {
+                                $score++;
+                            }
+                            $tempResult = $result[$key];
+                            if (empty($result[$key])) {
+                                $tempResult = 'X';
+                            }
+                            echo "<tr><td>{$numberA} {$sign} {$numberB}  = </td><td>{$calculatedResult}</td><td>{$tempResult}</td></tr>";
+
                         }
-                        echo "<tr><td>{$numberA} {$sign} {$numberB}  = </td><td>{$calculatedResult}</td><td>{$result[$i]}</td></tr>";
 
 
+                        echo '</table>';
+                        echo '<h4>Procento zprávných výsledků: ' . ($score / $scoreMax) * 100 . ' %</h4>';
                     }
-                    echo '</table>';
-                    echo '<h4>Procento zprávných výsledků: ' . ($score / $scoreMax) * 100 . ' %</h4>';
+                        echo '<a href="userTests.php">Zpět</a>';
                 }
                 ?>
 
@@ -84,7 +114,7 @@ function generateTestItem()
         $mode = $_POST['mode'];
         unset($tempSignArr);
         foreach ($mode as $sign => $value) {
-            if ($value == 1) {
+            if ((int)$value === 1) {
                 switch ($sign) {
                     case 'plus':
                         $tempSignArr[] = '+';
@@ -109,7 +139,6 @@ function generateTestItem()
 
     $sign = generateSign($tempSignArr);
     $numbers = generateNumbers($sign);
-    //return $numbers['numberA']." ".$sign." ".$numbers['numberB']." = "."?";
     return array($numbers['numberA'], $numbers['numberB'], $sign);
 
 

@@ -16,11 +16,12 @@
         <div class="row">
             <?php if (!$auth->isGuest()) { ?>
                 <div class="col-lg-2 topNavElement">
-                    <p>přihlášen jako:<a href="profile.php"><?php echo $_SESSION['name']; ?></a></p>
+                    <p>přihlášen jako: <a href="profile.php"><?php echo $auth->getLoggedInUserName(); ?></a></p>
                 </div>
                 <div class="col-lg-2 col-xs-3 topNavElement">
                     <a class="btn btn-default" href="userTests.php">Testy</a>
                 </div>
+
                 <div class="col-lg-2 col-xs-3 topNavElement">
                     <a class="btn btn-default" href="profile.php">Můj profil</a>
                 </div>
@@ -39,10 +40,10 @@
                 </div>
             <?php } ?>
             <div class="col-lg-2 col-xs-3 topNavElement">
-                <a href="training.php">
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                    </button>
+                <a href="training.php" class="btn btn-default">
+
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+
                 </a>
             </div>
         </div>

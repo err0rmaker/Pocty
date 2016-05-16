@@ -14,6 +14,7 @@ try {
         $password = $_POST['password'];
         if ($auth->authenticate($name, $password)) {
             $_SESSION['name'] = $name;
+
             header('Location: userTests.php');
             exit;
 

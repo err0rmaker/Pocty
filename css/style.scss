@@ -56,9 +56,11 @@ body {
   background-color: #00b3ee;
 }
 
-.operationMode label {
+#formOp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -110,9 +112,10 @@ body {
 .topNavElement {
   margin-top: 10px;
   margin-bottom: 10px;
+
 }
 
-.topNavElement button {
+.topNavElement a {
   background-color: $transpaerntBcColor;
   border: none;
 
