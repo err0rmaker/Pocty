@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-define('BASE_URL', $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/');
+define('BASE_URL', setBaseURL());
 define('SCRIPT_FILENAME', basename($_SERVER['SCRIPT_FILENAME']));
 require_once __DIR__ . '/functions/DBConnect.php';
 require_once __DIR__ . '/functions/Database.php';
@@ -15,7 +15,6 @@ require_once __DIR__ . '/functions/Auth.php';
 $auth = new Authentication($conn);
 $DB = new Database($conn);
 
-echo $auth->isGuest();
 
 if (!preg_match('#\b(index.php|login.php|register.php)\b#', SCRIPT_FILENAME) && $auth->isGuest()) {
     header('Location: login.php');
@@ -25,4 +24,16 @@ if (!preg_match('#\b(index.php|login.php|register.php)\b#', SCRIPT_FILENAME) && 
 
 include __DIR__ . '/layout/head.php';
 
+function setBaseURL()
+{
 
+    if (filter_var($_SERVER['SERVER_NAME'], FILTER_VALIDATE_IP)) {
+        return '';
+    }
+    if (array_key_exists('HTTPS', $_SERVER)) {
+        return 'https://';
+    }
+
+
+    return 'http://';
+}

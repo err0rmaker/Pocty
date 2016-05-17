@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Pocty</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome-4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/font-awesome-4.6.1/css/font-awesome.min.css">
 
 </head>
 <body id="bootstrap-overrides">
