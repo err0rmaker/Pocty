@@ -29,14 +29,14 @@ require_once __DIR__ . '/bootstrap.php';
                         $_SESSION['testItems'] = $testItems;
                     }
                     $testItems = $_SESSION['testItems'];
-                    echo '<pre>';
+                    //echo '<pre>';
                     //var_dump($testItems[0]);
-                    echo '<pre>';
+                    //echo '<pre>';
                     echo "<form method='post' action='userTest.php'>";
-                    for ($i = 0, $iMax = count($testItems); $i < $iMax; $i++) {
-                        $numberA = $testItems[$i][0];
-                        $numberB = $testItems[$i][1];
-                        $sign = $testItems[$i][2];
+
+                    foreach ($testItems as $key => $tempTestItem) {
+
+                        list($numberA, $numberB, $sign) = $tempTestItem;
 
 
                         echo "<div class='form-group'>";

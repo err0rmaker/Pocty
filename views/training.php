@@ -43,8 +43,6 @@
         <div class="col-lg-offset-4 col-md-offset-4 col-xs-offset-0 col-md-4">
             <div class="numbers ">
                 <div class="row">
-
-
                     <div class="col-xs-2 col-xs-offset-1">
                         <h1 id="numberA"><?php echo $_SESSION['numbers']['numberA'] ?></h1>
                     </div>

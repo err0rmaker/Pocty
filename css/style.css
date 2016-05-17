@@ -1,4 +1,4 @@
-@media handheld {
+@media (min-width: 768px) {
   body {
     color: #BCC8D1;
   }
@@ -15,7 +15,27 @@
   h1 {
     font-size: 1.5em;
   }
+
+  .topNavElement {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
+
+#customNavbar {
+  background-color: transparent;
+  border: none;
+}
+
+#customNavbar a {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #0f0f0f;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  margin-left: 20px;
+}
+
 .numbers {
   margin-top: 10%;
   margin-bottom: 11%; }

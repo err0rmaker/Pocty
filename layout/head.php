@@ -11,41 +11,52 @@
 
 </head>
 <body id="bootstrap-overrides">
-<div class="container">
-    <div class="topNav">
-        <div class="row">
-            <?php if (!$auth->isGuest()) { ?>
-                <div class="col-lg-2 topNavElement">
-                    <p>přihlášen jako: <a href="profile.php"><?php echo $auth->getLoggedInUserName(); ?></a></p>
-                </div>
-                <div class="col-lg-2 col-xs-3 topNavElement">
-                    <a class="btn btn-default" href="userTests.php">Testy</a>
-                </div>
+<nav class="navbar navbar-inverse" id="customNavbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav ">
+                <?php if (!$auth->isGuest()) { ?>
+                    <li>
+                        <a class="navbar-brand"
+                           href="profile.php">Přhlášen jako: <?php echo $auth->getLoggedInUserName(); ?></a>
+                    </li>
+                    <li>
+                        <a class="navbar-btn" href="userTests.php">Testy</a>
+                    </li>
 
-                <div class="col-lg-2 col-xs-3 topNavElement">
-                    <a class="btn btn-default" href="profile.php">Můj profil</a>
-                </div>
-                <div class="col-lg-2 col-xs-3 topNavElement">
-                    <a class="btn btn-default" href="logout.php">LOGOUT</a>
-                </div>
-            <?php } else { ?>
-                <div class="col-lg-2 topNavElement">
-                    <p>Nepřihlášený</p>
-                </div>
-                <div class="col-lg-2 col-xs-3 topNavElement">
-                    <a class="btn btn-default" href="login.php">LOGIN</a>
-                </div>
-                <div class="col-lg-2 col-xs-3 topNavElement">
-                    <a class="btn btn-default" href="register.php">Registrace</a>
-                </div>
-            <?php } ?>
-            <div class="col-lg-2 col-xs-3 topNavElement">
-                <a href="training.php" class="btn btn-default">
+                    <li>
+                        <a class="navbar-btn" href="profile.php">Můj profil</a>
+                    </li>
+                    <li>
+                        <a class="navbar-btn" href="logout.php">LOGOUT</a>
+                    </li>
+                <?php } else { ?>
 
-                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    <li>
+                        <a class="navbar-btn">Nepřihlášený</a>
+                    </li>
+                    <li>
+                        <a class="navbar-btn navbar-static-top" href="login.php">LOGIN</a>
+                    </li>
+                    <li>
+                        <a class="navbar-btn" href="register.php">Registrace</a>
+                    </li>
 
-                </a>
-            </div>
+                <?php } ?>
+                <li>
+
+                    <a href="training.php" class="navbar-btn">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>
