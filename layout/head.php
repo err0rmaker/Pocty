@@ -52,7 +52,7 @@
                 <?php } ?>
                 <li>
 
-                    <a href="training.php" class="navbar-btn">
+                    <a href="index.php" class="navbar-btn">
                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                     </a>
                 </li>

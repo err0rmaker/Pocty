@@ -95,7 +95,9 @@ require_once __DIR__ . '/bootstrap.php';
                         echo '</table>';
 
                         echo '<h4>Procento zprávných výsledků: ' . ($score / $scoreMax) * 100 . ' %</h4>';
-                    }
+
+
+                        }
                         echo '<a href="userTests.php">Zpět</a>';
                 }
                 ?>
