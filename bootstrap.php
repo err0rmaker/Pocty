@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-define('BASE_URL', setBaseURL());
+define('BASE_URL', getUrlPrefix() . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/');
 define('SCRIPT_FILENAME', basename($_SERVER['SCRIPT_FILENAME']));
 require_once __DIR__ . '/functions/DBConnect.php';
 require_once __DIR__ . '/functions/Database.php';
@@ -24,14 +24,14 @@ if (!preg_match('#\b(index.php|login.php|register.php)\b#', SCRIPT_FILENAME) && 
 
 include __DIR__ . '/layout/head.php';
 
-function setBaseURL()
+function getUrlPrefix()
 {
 
-    if (filter_var($_SERVER['SERVER_NAME'], FILTER_VALIDATE_IP)) {
-        return '';
-    }
     if (array_key_exists('HTTPS', $_SERVER)) {
         return 'https://';
+    }
+    if (filter_var($_SERVER['SERVER_NAME'], FILTER_VALIDATE_IP)) {
+        return '';
     }
 
 
