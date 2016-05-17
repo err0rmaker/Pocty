@@ -80,7 +80,7 @@ require_once __DIR__ . '/bootstrap.php';
                             list($numberA, $numberB, $sign) = $tempTestItem;
 
                             $calculatedResult = calculate($numberA, $numberB, $sign);
-                            if ($calculatedResult === $result[$key]) {
+                            if ($calculatedResult === (int)$result[$key]) {
                                 $score++;
                             }
                             $tempResult = $result[$key];
@@ -93,6 +93,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 
                         echo '</table>';
+
                         echo '<h4>Procento zprávných výsledků: ' . ($score / $scoreMax) * 100 . ' %</h4>';
                     }
                         echo '<a href="userTests.php">Zpět</a>';
