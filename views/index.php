@@ -64,8 +64,6 @@
 
 
             <div class="row">
-
-
                 <form method="POST" action="#" id="resultForm" role="form">
                     <div class="row">
                         <div class="form-group col-lg-12 col-md-12  col-xs-12">

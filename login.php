@@ -27,4 +27,4 @@ try {
 }
 
 include __DIR__ . '/views/login.php';
-require_once __DIR__ . 'bootstrap.end.php';
+require_once __DIR__ . '/bootstrap.end.php';

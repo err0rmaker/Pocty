@@ -6,7 +6,7 @@ header('Location: index.php');
     case 'login.php': {
         
     }
-    case 'math.php': {
+    case 'MathJson.php': {
         
     }
 }*/

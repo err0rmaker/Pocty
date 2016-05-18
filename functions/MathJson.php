@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/filterOperation.php';
-require_once __DIR__ . '/functionsMath.php';
+require_once __DIR__ . '/Math.class.php';
 
 $numberA = $_SESSION['numbers']['numberA'];
 $numberB = $_SESSION['numbers']['numberB'];
@@ -17,9 +17,13 @@ $json = array(
 
 if (array_key_exists('result', $_POST)) {
     $result = $_POST['result'];
+    try {
+        $Math->validate($result);
+
+
     switch ($sign) {
         case '+':
-            if ((int)$numberA + (int)$numberB == (int)$result) {
+            if ((int)$numberA + (int)$numberB === (int)$result) {
                 $json['result'] = true;
             }
 
@@ -28,7 +32,7 @@ if (array_key_exists('result', $_POST)) {
             break;
 
         case '-':
-            if ((int)$numberA - (int)$numberB == (int)$result) {
+            if ((int)$numberA - (int)$numberB === (int)$result) {
                 $json['result'] = true;
             }
 
@@ -36,7 +40,7 @@ if (array_key_exists('result', $_POST)) {
 
             break;
         case '*':
-            if ((int)$numberA * (int)$numberB == (int)$result) {
+            if ((int)$numberA * (int)$numberB === (int)$result) {
                 $json['result'] = true;
             }
             $json['int_result'] = (int)$numberA * (int)$numberB;
@@ -44,7 +48,7 @@ if (array_key_exists('result', $_POST)) {
 
             break;
         case '/':
-            if ((double)$numberA / (double)$numberB == (double)$result) {
+            if ((double)$numberA / (double)$numberB === (double)$result) {
                 $json['result'] = true;
 
             }
@@ -54,8 +58,8 @@ if (array_key_exists('result', $_POST)) {
             break;
     }
     $tempSignArr = filterOperations();
-    $sign = generateSign($tempSignArr);
-    $numbers = generateNumbers($sign);
+        $sign = $Math->generateSign($tempSignArr);
+        $numbers = $Math->generateNumbers($sign);
 
     $_SESSION['numbers']['numberA'] = $numbers['numberA'];
     $_SESSION['numbers']['numberB'] = $numbers['numberB'];
@@ -65,6 +69,10 @@ if (array_key_exists('result', $_POST)) {
     $json['numberB'] = $numbers['numberB'];
     $json['sign'] = $sign;
     $json['succesful'] = true;
+
+    } catch (InvalidArgumentException $e) {
+        $json['succesful'] = false;
+    }
 }
 
 

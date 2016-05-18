@@ -2,10 +2,11 @@
 require_once __DIR__ . '/bootstrap.php';
 if (!array_key_exists('numbers', $_SESSION)) {
     $tempSignArr = array('+', '-', '*', '/');
-    $sign = generateSign($tempSignArr);
+    $sign = $Math->generateSign($tempSignArr);
     $_SESSION['sign'] = $sign;
-    $_SESSION['numbers'] = generateNumbers($sign);
+    $_SESSION['numbers'] = $Math->generateNumbers($sign);
 }
-require_once __DIR__ . '/views/training.php';
+require_once __DIR__ . '/views/index.php';
+
 ?>
 
