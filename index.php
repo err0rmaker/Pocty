@@ -6,7 +6,10 @@ if (!array_key_exists('numbers', $_SESSION)) {
     $_SESSION['sign'] = $sign;
     $_SESSION['numbers'] = $Math->generateNumbers($sign);
 }
+
 require_once __DIR__ . '/views/index.php';
+
+require_once __DIR__ . '/bootstrap.end.php';
 
 ?>
 

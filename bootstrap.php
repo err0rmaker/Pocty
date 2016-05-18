@@ -2,7 +2,7 @@
 
 session_start();
 define('BASE_URL', getUrlPrefix() . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/');
-echo BASE_URL;
+//echo BASE_URL;
 define('SCRIPT_FILENAME', basename($_SERVER['SCRIPT_FILENAME']));
 require_once __DIR__ . '/functions/DBConnect.php';
 require_once __DIR__ . '/functions/Database.class.php';
@@ -16,6 +16,11 @@ require_once __DIR__ . '/functions/Auth.php';
 $auth = new Authentication($conn);
 $DB = new Database($conn);
 $Math = new Math();
+
+
+$_SESSION['math'] = $Math;
+
+
 
 
 if (!preg_match('#\b(index.php|login.php|register.php)\b#', SCRIPT_FILENAME) && $auth->isGuest()) {

@@ -19,5 +19,11 @@ class Database
         $this->conn = $DBConn->getConnection();
     }
 
+    public function select($target)
+    {
+
+        $sql = 'SELECT';
+    }
+
 
 }

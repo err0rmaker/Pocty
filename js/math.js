@@ -17,7 +17,6 @@ $(document).ready(function () {
     var generateNext = true;
     var backgroundIndex = 2;
 
-
     $("#resultForm").on("submit", function (e) {
         e.preventDefault();
         console.log(generateNext);
@@ -51,7 +50,7 @@ $(document).ready(function () {
 
         console.log(jsonData);
         $.ajax({
-            url: 'functions/MathJson.php', type: "POST", data: jsonData,
+            url: 'functions/MathAjax.php', type: "POST", data: jsonData,
             success: function (data) {
                 console.log(data);
                 resultData = JSON.parse(data);
@@ -93,7 +92,8 @@ $(document).ready(function () {
                 }
 
             ,
-            error: function () {
+            error: function (req) {
+                alert(req.responseText);
                 alert("Fail");
             }
         });

@@ -1,24 +1,26 @@
 <?php
-session_start();
-require_once __DIR__ . '/filterOperation.php';
+
 require_once __DIR__ . '/Math.class.php';
+require_once __DIR__ . '/filterOperation.php';
+session_start();
+$Math = $_SESSION['math'];
+
 
 $numberA = $_SESSION['numbers']['numberA'];
 $numberB = $_SESSION['numbers']['numberB'];
 $sign = $_SESSION['sign'];
-$json = array(
+$json = [
     'succesful' => false,
     'result' => false,
     'numberA' => 0,
     'numberB' => 0,
     'int_result' => 0
-);
+];
 
 
 if (array_key_exists('result', $_POST)) {
-    $result = $_POST['result'];
-    try {
-        $Math->validate($result);
+    $result = (int)$_POST['result'];
+
 
 
     switch ($sign) {
@@ -56,6 +58,9 @@ if (array_key_exists('result', $_POST)) {
             $json['int_result'] = (double)$numberA / (double)$numberB;
 
             break;
+        default :
+            throw new Exception("nezname znamenko");
+
     }
     $tempSignArr = filterOperations();
         $sign = $Math->generateSign($tempSignArr);
@@ -70,11 +75,8 @@ if (array_key_exists('result', $_POST)) {
     $json['sign'] = $sign;
     $json['succesful'] = true;
 
-    } catch (InvalidArgumentException $e) {
-        $json['succesful'] = false;
-    }
-}
 
+}
 
 echo json_encode($json);
 
