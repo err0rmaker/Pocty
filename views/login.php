@@ -9,7 +9,7 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
                         Přihlásit
                     </button>
-                    <p><?php echo $message ?></p>
+                    <p><?php //echo $message ?></p>
                 </form>
             </div>
             <div class="col-xs-12 text-center" id="registerButton">

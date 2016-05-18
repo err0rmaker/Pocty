@@ -32,8 +32,5 @@ if (array_key_exists('name', $_POST) && array_key_exists('password', $_POST) && 
 }
 
 
-?>
-<?php
 require __DIR__ . '/views/register.php';
-
-?>
+require_once __DIR__ . '/bootstrap.end.php';

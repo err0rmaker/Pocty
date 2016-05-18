@@ -53,6 +53,3 @@
 </div>
 
 
-<?php
-require __DIR__ . '/../bootstrap.end.php';
-?>
