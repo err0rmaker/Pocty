@@ -7,8 +7,8 @@ class Database
      */
     private $conn;
 
-    private $tableUser = 'soupak_uzivatele';
-    private $tableTest = 'soupak_testy';
+    //private $tableUser = 'soupak_uzivatele';
+    //private $tableTest = 'soupak_testy';
 
     /**
      * Database constructor.
@@ -24,6 +24,30 @@ class Database
 
         $sql = 'SELECT';
     }
+
+    public function insert($table, $targetValues, $inputValues)
+    {
+        $sql = "\" INSERT INTO {$table}";
+        $sql .= '(';
+        $maxInputValues = count($inputValues) - 1;
+        $maxTargetValues = count($targetValues) - 1;
+        foreach ($targetValues as $key => $value) {
+            $sql .= "'$value'";
+            ($key === $maxTargetValues) ? $sql .= '' : $sql .= ',';
+        }
+        $sql .= ') VALUES (';
+        foreach ($inputValues as $key => $value) {
+
+            $sql .= "'$value'";
+            ($key === $maxInputValues) ? $sql .= '' : $sql .= ',';
+        }
+        $sql .= ")\"";
+
+        $this->conn->mysqli_query($sql);
+    }
+
+
+
 
 
 }
