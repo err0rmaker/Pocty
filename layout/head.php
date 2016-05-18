@@ -20,13 +20,12 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
+        <a class="navbar-brand" href="profile.php">Přhlášen
+            jako: <?php echo ($auth->isGuest()) ? '' : $auth->getLoggedInUserName(); ?></a>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav ">
+            <ul class="nav navbar-nav navbar-right">
                 <?php if (!$auth->isGuest()) { ?>
-                    <li>
-                        <a class="navbar-brand"
-                           href="profile.php">Přhlášen jako: <?php echo $auth->getLoggedInUserName(); ?></a>
-                    </li>
+
                     <li>
                         <a class="navbar-btn" href="userTests.php">Testy</a>
                     </li>
@@ -40,10 +39,7 @@
                 <?php } else { ?>
 
                     <li>
-                        <a class="navbar-btn">Nepřihlášený</a>
-                    </li>
-                    <li>
-                        <a class="navbar-btn navbar-static-top" href="login.php">LOGIN</a>
+                        <a class="navbar-btn" href="login.php">LOGIN</a>
                     </li>
                     <li>
                         <a class="navbar-btn" href="register.php">Registrace</a>
@@ -51,7 +47,6 @@
 
                 <?php } ?>
                 <li>
-
                     <a href="index.php" class="navbar-btn">
                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                     </a>

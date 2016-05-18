@@ -43,7 +43,7 @@ class Database
         }
         $sql .= ")\"";
 
-        $this->conn->mysqli_query($sql);
+        //$this->conn->mysqli_query($sql);
     }
 
 
