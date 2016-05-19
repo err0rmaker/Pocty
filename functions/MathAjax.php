@@ -59,7 +59,7 @@ if (array_key_exists('result', $_POST)) {
 
             break;
         default :
-            throw new Exception("nezname znamenko");
+            throw new Exception('nezname znamenko');
 
     }
     $tempSignArr = filterOperations();

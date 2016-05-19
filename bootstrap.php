@@ -2,7 +2,6 @@
 
 session_start();
 define('BASE_URL', getUrlPrefix() . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/');
-//echo BASE_URL;
 define('SCRIPT_FILENAME', basename($_SERVER['SCRIPT_FILENAME']));
 require_once __DIR__ . '/functions/DBConnect.php';
 require_once __DIR__ . '/functions/Database.class.php';

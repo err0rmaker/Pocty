@@ -22,7 +22,7 @@
             </button>
         </div>
         <a class="navbar-brand" href="profile.php">Přhlášen
-            jako: <?php echo ($auth->isGuest()) ? '' : $auth->getLoggedInUserName(); ?></a>
+            jako: <?php echo $auth->isGuest() ? '' : $auth->getLoggedInUserName(); ?></a>
         <div class="collapse navbar-collapse" id="myNavbar" style="border: none">
             <ul class="nav navbar-nav navbar-right">
                 <?php if (!$auth->isGuest()) { ?>

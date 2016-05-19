@@ -8,6 +8,7 @@ class Authentication
     private $conn;
 
     private $table = 'soupak_uzivatele';
+    private $user_id;
 
     /**
      * Authentication constructor.
@@ -22,11 +23,12 @@ class Authentication
     {
         $name = $this->conn->real_escape_string($this->clean($name));
         $password = $this->conn->real_escape_string($this->clean($password));
-        $sql = "SELECT password FROM {$this->table} WHERE name LIKE '$name'";
+        $sql = "SELECT id,password FROM {$this->table} WHERE name = '$name'";
         $result = $this->conn->query($sql);
         $row = $result->fetch_assoc();
-        echo $name;
         if (password_verify($password, $row['password'])) {
+            $_SESSION['name'] = $name;
+            $_SESSION['user_id'] = $row['id'];
             return true;
         }
 
@@ -46,11 +48,11 @@ class Authentication
             throw new RuntimeException('Uzivatel jiz existuje');
         }
 
-        //obrana proti sql injekci
         $name = $this->conn->real_escape_string(strtolower($this->clean($name)));
         $password = $this->conn->real_escape_string($this->clean($password));
         $password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT into {$this->table} (name, password) VALUES ('$name', '$password')";
+        echo $sql;
         if ($this->conn->query($sql)) {
             return true;
         }
@@ -68,6 +70,7 @@ class Authentication
         return $result->num_rows === 1;
     }
 
+
     public function isGuest()
     {
         return !array_key_exists('name', $_SESSION);
@@ -78,5 +81,12 @@ class Authentication
         return $_SESSION['name'];
 
     }
+
+    public function getLoggedInUserId()
+    {
+        return $_SESSION['user_id'];
+
+    }
+
 
 }

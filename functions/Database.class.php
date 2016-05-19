@@ -19,31 +19,74 @@ class Database
         $this->conn = $DBConn->getConnection();
     }
 
-    public function select($target)
+    /**
+     * @param $table string
+     * @param $targetValues [] string
+     * target columns in a database
+     * input data
+     * @param $condition (s) [] string after WHERE
+     * @throws Exception query error
+     * @return mysqli_result
+     */
+    public function select($table, $targetValues, $condition)
     {
 
-        $sql = 'SELECT';
+        $maxTargetValues = count($targetValues) - 1;
+
+        $sql = "SELECT ";
+
+
+        foreach ($targetValues as $key => $value) {
+            $sql .= "$value";
+            ($key === $maxTargetValues) ? $sql .= '' : $sql .= ',';
+        }
+        $sql .= ' FROM ' . "$table ";
+        $sql .= "$condition";
+
+
+        if (!$result = $this->conn->query($sql)) {
+            throw new Exception("Při vykonávání dotazu se vyskytla chyba");
+
+        }
+        return $result;
+
+
     }
 
+    /**
+     * @param $table mysqli
+     * @param $targetValues [] target columns in a database
+     * @param $inputValues [] input data
+     * @throws Exception query error
+     * @return mysqli_result
+     */
     public function insert($table, $targetValues, $inputValues)
     {
-        $sql = "\" INSERT INTO {$table}";
+        $sql = "INSERT INTO $table ";
         $sql .= '(';
         $maxInputValues = count($inputValues) - 1;
         $maxTargetValues = count($targetValues) - 1;
         foreach ($targetValues as $key => $value) {
-            $sql .= "'$value'";
+            $sql .= "$value";
             ($key === $maxTargetValues) ? $sql .= '' : $sql .= ',';
         }
         $sql .= ') VALUES (';
         foreach ($inputValues as $key => $value) {
 
-            $sql .= "'$value'";
+            $sql .= '\'' . "$value" . '\'';
             ($key === $maxInputValues) ? $sql .= '' : $sql .= ',';
         }
-        $sql .= ")\"";
+        $sql .= ")";
 
-        //$this->conn->mysqli_query($sql);
+        $result = $this->conn->query($sql);
+
+        if (!$result) {
+            echo 'chyba';
+            throw new Exception("Při vykonávání dotazu se vyskytla chyba");
+        }
+
+        return $result;
+
     }
 
 

@@ -12,7 +12,6 @@
 
             <form method='post' action='userTestResult.php'>
                 <?php
-                if (isset($testItems)) {
                     foreach ($testItems as $key => $tempTestItem) {
 
                         list($numberA, $numberB, $sign) = $tempTestItem;
@@ -24,7 +23,7 @@
 
                     }
 
-                }
+
                 ?>
                 <label for='submitTest'>Zkontrolovat</label>
                 <input class='btn btn-default' type='submit' id='submitTest'>

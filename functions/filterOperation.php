@@ -38,7 +38,7 @@ function filterOperations()
 
 
     foreach ($signArr as $key => $value) {
-        if ($value == true) {
+        if ($value === true) {
             $tempSignArr[] = $key;
         }
     }

@@ -18,7 +18,6 @@
                     <th>Váš výsledek</th>
                 </tr>
                 <?php
-                if (isset($finalTestItems)) {
 
                     foreach ($finalTestItems as $key => $testItem) {
 
@@ -31,7 +30,7 @@
 
                         echo "<tr><td>{$numberA} {$sign} {$numberB}  = </td><td>{$calcResult}</td><td>{$correct}{$result}</td></tr>";
                     }
-                }
+
                 ?>
             </table>
 

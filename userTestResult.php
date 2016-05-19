@@ -47,7 +47,7 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
 
     }
 
-    $DB->insert('soupak_uzivatele', ['id_uzivatel', 'id_priklad', 'skore'], [10, 10, $finalScore]);
+    $DB->insert('soupak_testy', ['id_uzivatel', 'skore'], [$_SESSION['user_id'], $finalScore]);
     
     unset($_SESSION['testItems']);
 
