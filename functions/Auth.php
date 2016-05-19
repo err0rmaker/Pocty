@@ -8,7 +8,6 @@ class Authentication
     private $conn;
 
     private $table = 'soupak_uzivatele';
-    private $user_id;
 
     /**
      * Authentication constructor.

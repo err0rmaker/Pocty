@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
-
+$count = 10;
 if (array_key_exists('count', $_POST)) {
     $count = $_POST['count'];
 }
-$count = 10;
+
 $testItems = [];
 if (!array_key_exists('testItems', $_SESSION)) {
 

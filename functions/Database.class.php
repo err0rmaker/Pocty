@@ -33,7 +33,7 @@ class Database
 
         $maxTargetValues = count($targetValues) - 1;
 
-        $sql = "SELECT ";
+        $sql = 'SELECT ';
 
 
         foreach ($targetValues as $key => $value) {
@@ -45,7 +45,7 @@ class Database
 
 
         if (!$result = $this->conn->query($sql)) {
-            throw new Exception("Při vykonávání dotazu se vyskytla chyba");
+            throw new Exception('Při vykonávání dotazu se vyskytla chyba');
 
         }
         return $result;
@@ -54,7 +54,7 @@ class Database
     }
 
     /**
-     * @param $table mysqli
+     * @param $table string
      * @param $targetValues [] target columns in a database
      * @param $inputValues [] input data
      * @throws Exception query error
@@ -76,13 +76,13 @@ class Database
             $sql .= '\'' . "$value" . '\'';
             ($key === $maxInputValues) ? $sql .= '' : $sql .= ',';
         }
-        $sql .= ")";
+        $sql .= ')';
 
         $result = $this->conn->query($sql);
 
         if (!$result) {
             echo 'chyba';
-            throw new Exception("Při vykonávání dotazu se vyskytla chyba");
+            throw new Exception('Při vykonávání dotazu se vyskytla chyba');
         }
 
         return $result;
