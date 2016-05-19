@@ -16,7 +16,7 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
     $testItems = $_SESSION['testItems'];
 
 
-    $correct = false;
+    $correct = '';
     $scoreMax = count($testItems);
 
 
@@ -27,6 +27,7 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
 
         $calculatedResult = $Math->calculate($numberA, $numberB, $sign);
 
+        $correct = '';
         if ($calculatedResult === (int)$result[$key]) {
             $score++;
 
