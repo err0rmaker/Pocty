@@ -17,14 +17,7 @@
                     <th>Průměrné skóre</th>
                     <th>Četnost testů</th>
                 </tr>
-                <?php
-                while ($row = $result->fetch_assoc()) {
-
-
-                    //echo "<tr><td>{$id}</td><td>{$score} %</td><td>{$date}</td></tr>";
-                }
-
-                ?>
+                
             </table>
         </div>
     </div>

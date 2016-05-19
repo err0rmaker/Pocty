@@ -18,20 +18,56 @@
                     <th>Datum</th>
                 </tr>
                 <?php
-                while ($row = $result->fetch_assoc()) {
+                if ($dataReady) {
 
-                    list($id, $user_id, $score, $date) = array_values($row);
+                    foreach ($data as $row) {
+                        list($id, $user_id, $score, $date) = array_values($row);
 
-                    echo "<tr><td>{$id}</td><td>{$score} %</td><td>{$date}</td></tr>";
+                        echo "<tr><td>{$id}</td><td>{$score} %</td><td>{$date}</td></tr>";
+                    }
                 }
 
                 ?>
             </table>
+            <?php echo $message ?>
 
 
-            <a href="userTests.php">Zpět</a>
+            <div id="cal-heatmap"></div>
 
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+
+
+    var data = <?php echo json_encode($dates);?>;
+
+    var parser = function (data) {
+        var stats = {};
+        for (var d in data) {
+            stats[data[d].date] = data[d].value;
+        }
+        return stats;
+    };
+
+    var cal = new CalHeatMap();
+    cal.init({
+        data: data,
+        afterLoadData: parser,
+
+        range: 3,
+        start: new Date(),
+        domain: "month",
+        subDomain: "x_day",
+        cellSize: 20,
+        subDomainTextFormat: "%d",
+        itemSelector: "#cal-heatmap"
+
+
+    });
+
+
+</script>
 

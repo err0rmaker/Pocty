@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="<?php //echo BASE_URL; ?>node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php //echo BASE_URL; ?>css/font-awesome-4.6.1/css/font-awesome.min.css">
 
+    <script src="js/jquery-2.2.3.min.js" type="application/javascript"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js" type="application/javascript"></script>
+    <script src="js/math.js" type="application/javascript"></script>
+
+    <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css"/>
+
 </head>
 <body id="bootstrap-overrides">
 <nav class="navbar navbar-inverse" id="customNavbar" style="border: none">
@@ -33,6 +41,9 @@
 
                     <li>
                         <a class="navbar-btn" href="profile.php">Můj profil</a>
+                    </li>
+                    <li>
+                        <a class="navbar-btn" href="leaderboards.php">Žebříčky</a>
                     </li>
                     <li>
                         <a class="navbar-btn" href="logout.php">LOGOUT</a>
