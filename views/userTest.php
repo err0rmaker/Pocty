@@ -8,7 +8,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-5 col-md-offset-3" id="tests">
+        <div class="col-md-4 col-md-offset-4" id="tests">
 
             <form method='post' action='userTestResult.php'>
                 <?php
@@ -20,7 +20,6 @@
                         echo "<div class='form-group'>";
                         echo "<label for=testItem>{$numberA} {$sign} {$numberB}</label>";
                         echo "<input  class='form-control' type='number' name='result[]' id = 'testItem'>";
-                        //echo "<input type='hidden' name='previous[]' value='{$numberA}|{$numberB}|{$sign}'>
                         echo '</div>';
 
                     }

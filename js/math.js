@@ -101,7 +101,7 @@ $(document).ready(function () {
 
 
     var body = $('body');
-    var backgrounds = ["../images/background_0.svg", "../images/background_1.svg", "../images/background_2.svg", "../images/background_3.svg", "../images/background_4.svg"];
+    var backgrounds = ["images/background_0.svg", "images/background_1.svg", "images/background_3.svg", "images/background_3.svg", "images/background_4.svg"];
 
     function changeBackground(backgroundIndex) {
         console.log(backgroundIndex);

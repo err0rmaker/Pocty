@@ -1,72 +1,67 @@
-$transpaerntBcColor: rgba(0, 0, 0, 0.2);
+$TransparentColor: rgba(0, 0, 0, 0.2);
 
-@media (min-width: 768px) {
-  body {
-    color: #BCC8D1;
+body {
+  color: #BCC8D1;
+  font-family: "sans-serif Verdana", sans-serif;
+  border: none;
+}
 
-  }
-  p h1 h2 {
-    color: #BCC8D1;
-  }
+p h1 h2 {
+  color: #bcc8d1;
+}
 
-  .numbers {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  h1 {
-    font-size: 1.5em;
-  }
-  .topNavElement {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+.numbers {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
+h1 {
+  font-size: 1.5em;
+}
 
+.topNavElement {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #customNavbar {
+
   a {
-    background-color: $transpaerntBcColor;
+
+    background-color: $TransparentColor;
     color: #0f0f0f;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     margin-left: 20px;
   }
   background-color: transparent;
   border: none;
 
 }
-.numbers {
-  margin-top: 10%;
-  margin-bottom: 11%; }
-#calcResult{
-  background-color: $transpaerntBcColor;
+
+#calcResult {
+  background-color: $TransparentColor;
 }
 
 #bootstrap-overrides {
-  font-family: sans-serif Verdana;
   color: rgba(43, 43, 43, 0.72)
 }
+
 body {
-  background: url("../images/background_2.svg") no-repeat fixed center;
+  background: url("../images/background_1.svg") no-repeat center fixed;
   margin: 0 auto;
   height: auto;
   background-size: cover;
 
-
 }
 
-.footer {
-  margin-top: 500px;
-}
 .operationMode {
   height: 40px;
   text-align: center;
   text-decoration: none;
-  background-color: $transpaerntBcColor;
+  background-color: $TransparentColor;
   border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
 
 }
 
@@ -76,10 +71,17 @@ body {
 }
 
 #formOp {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -96,8 +98,6 @@ body {
   height: auto;
   padding: 10px;
   margin-bottom: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -107,13 +107,10 @@ body {
 
 .account-wall {
 
-  background-color: $transpaerntBcColor;
+  background-color: $TransparentColor;
 
   margin-top: 10px;
   padding: 40px 0 20px 0;
-  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .login-title {
@@ -135,19 +132,34 @@ body {
 }
 
 .topNavElement a {
-  background-color: $transpaerntBcColor;
+  background-color: $TransparentColor;
   border: none;
 
 }
 
-#tests {
-  margin-top: 40px;
+.footer {
+  margin-top: 600px;
 }
 
-.marginTop {
-  margin-top: 21px;
+@media (min-width: 960px) {
+  #tests {
+    margin-top: 40px;
+  }
 
+  .marginTop {
+    margin-top: 21px;
+
+  }
+  .topNavElement {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  #customNavbar {
+    a {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+  }
+  .operationMode {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
 }
-
-
-
