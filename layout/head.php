@@ -16,11 +16,13 @@
     <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Righteous&subset=latin,latin-ext' rel='stylesheet'
+          type='text/css'>
 
 </head>
 <body id="bootstrap-overrides">
-<nav class="navbar navbar-inverse" id="customNavbar" style="border: none">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse" id="customNavbar" style="border: none; background-color: transparent">
+    <div class="container-fluid" id="customNavbar" style="background-color: transparent">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"
                     style="border: none">
@@ -28,10 +30,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand">Karel Šoupa | Počty</a>
         </div>
         <a class="navbar-brand" href="profile.php">Přhlášen
             jako: <?php echo $auth->isGuest() ? '' : $auth->getLoggedInUserName(); ?></a>
         <div class="collapse navbar-collapse" id="myNavbar" style="border: none">
+
             <ul class="nav navbar-nav navbar-right">
                 <?php if (!$auth->isGuest()) { ?>
 

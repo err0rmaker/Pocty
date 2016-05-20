@@ -8,8 +8,9 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-5 col-md-offset-3" id="tests">
+        <div class="col-md-7 col-md-offset-2" id="tests">
 
+            <div class="table-responsive transparent-rounded">
 
             <table class='table'>
                 <tr>
@@ -29,10 +30,12 @@
 
                 ?>
             </table>
+            </div>
             <?php echo $message ?>
 
-
+            <div class="transparent-rounded marginTop" id="cal-heatmap-wrapper">
             <div id="cal-heatmap"></div>
+            </div>
 
         </div>
     </div>

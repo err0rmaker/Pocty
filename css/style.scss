@@ -2,7 +2,7 @@ $TransparentColor: rgba(0, 0, 0, 0.2);
 
 body {
   color: #BCC8D1;
-  font-family: "sans-serif Verdana", sans-serif;
+
   border: none;
 }
 
@@ -25,26 +25,42 @@ h1 {
 }
 
 #customNavbar {
+  @extend .transparent-rounded;
+}
 
-  a {
-
-    background-color: $TransparentColor;
-    color: #0f0f0f;
-    border: none;
-    border-radius: 10px;
-    margin-left: 20px;
-  }
+#myNavbar {
   background-color: transparent;
-  border: none;
 
 }
 
+.transparent-rounded {
+  a {
+    background-color: $TransparentColor;
+    color: #9acfea;
+    border: none;
+    margin-left: 20px;
+    border-radius: 20px;
+  }
+  a:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0px 0px rgba(0, 0, 0, 0.23);
+  }
+  border: none;
+  background-color: $TransparentColor;
+  border-radius: 20px;
+
+
+}
 #calcResult {
   background-color: $TransparentColor;
 }
 
 #bootstrap-overrides {
-  color: rgba(43, 43, 43, 0.72)
+  color: rgba(43, 43, 43, 0.72);
+  font-family: 'Righteous', cursive;
+}
+
+#cal-heatmap {
+  padding: 10%
 }
 
 body {
@@ -59,16 +75,11 @@ body {
   height: 40px;
   text-align: center;
   text-decoration: none;
-  background-color: $TransparentColor;
-  border-radius: 10px;
+  @extend .transparent-rounded;
 
 
 }
 
-.operationMode h1 {
-
-  background-color: #00b3ee;
-}
 
 #formOp {
   display: -webkit-box;
@@ -83,6 +94,7 @@ body {
 }
 
 .form-signin {
+  @extend .transparent-rounded;
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
@@ -106,9 +118,6 @@ body {
 }
 
 .account-wall {
-
-  background-color: $TransparentColor;
-
   margin-top: 10px;
   padding: 40px 0 20px 0;
 }
@@ -123,18 +132,6 @@ body {
 #registerButton {
 
   margin-top: 20px;
-}
-
-.topNavElement {
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-}
-
-.topNavElement a {
-  background-color: $TransparentColor;
-  border: none;
-
 }
 
 .footer {

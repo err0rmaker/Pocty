@@ -11,6 +11,7 @@
         <div class="col-md-5 col-md-offset-3" id="tests">
 
             <h4>Procento zprávných výsledků: <?php echo $finalScore ?> %</h4>
+            <div class="table-responsive transparent-rounded">
             <table class='table'>
                 <tr>
                     <th>Příklad</th>
@@ -33,6 +34,7 @@
 
                 ?>
             </table>
+            </div>
 
 
             <a href="userTests.php">Zpět</a>
