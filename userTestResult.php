@@ -48,11 +48,29 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
     }
 
     $DB->insert('soupak_testy', ['id_uzivatel', 'skore'], [$_SESSION['user_id'], $finalScore]);
-    
+
+
+    //update procent testu a poctu testu
+    $result = $DB->select('soupak_uzivatele', ['score_avg', 'score_total', 'test_count'], "WHERE id = {$_SESSION['user_id']}");
+    $row = $result->fetch_assoc();
+    $score_total = $row['score_total'];
+    $score_total += $finalScore;
+    $test_count = $row['test_count'];
+    $test_count++;
+    $score_avg = $row['score_avg'];
+
+    $score_avg = ($score_total / $test_count);
+
+    $conn = $conn->getConnection();
+    $conn->query("UPDATE soupak_uzivatele  SET score_avg = '$score_avg', score_total = '$score_total',test_count = '$test_count' WHERE id = {$_SESSION['user_id']}");
+
+
+
     unset($_SESSION['testItems']);
 
 
 }
+
 require_once __DIR__ . '/views/userTestResult.php';
 
 require_once __DIR__ . '/bootstrap.end.php';

@@ -8,6 +8,9 @@
 
 <div class="container">
     <div class="row">
+        <row>
+            <div class="col-md-offset-3"><h3>Top 10 počtářů</h3></div>
+        </row>
         <div class="col-md-5 col-md-offset-3" id="tests">
 
 
@@ -15,9 +18,13 @@
                 <tr>
                     <th>Pořadí</th>
                     <th>Průměrné skóre</th>
-                    <th>Četnost testů</th>
+                    <th>Testů celkem</th>
                 </tr>
-                
+                <?php
+                foreach ($data as $value) {
+                    echo "<tr><td>{$value['name']}<td><td>{$value['score_avg']}</td><td>{$value['test_count']}</td></tr>";
+                }
+                ?>
             </table>
         </div>
     </div>
