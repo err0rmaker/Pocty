@@ -9,33 +9,45 @@
 <div class="container">
     <div class="row">
         <div class="col-md-7 col-md-offset-2" id="tests">
-
+            <div class="row">
+                <div class="col-md-offset-1">
+                    <h2>Historie testů</h2>
+                </div>
+            </div>
             <div class="table-responsive transparent-rounded">
 
-            <table class='table'>
-                <tr>
-                    <th>ID testu</th>
-                    <th>Vaše úspěšnost</th>
-                    <th>Datum</th>
-                </tr>
-                <?php
-                if ($dataReady) {
+                <table class='table'>
+                    <tr>
+                        <th>ID testu</th>
+                        <th>Vaše úspěšnost</th>
+                        <th>Datum</th>
+                    </tr>
+                    <?php
+                    if ($dataReady) {
 
-                    foreach ($data as $row) {
-                        list($id, $user_id, $score, $date) = array_values($row);
+                        foreach ($data as $row) {
+                            list($id, $user_id, $score, $date) = array_values($row);
 
-                        echo "<tr><td>{$id}</td><td>{$score} %</td><td>{$date}</td></tr>";
+                            echo "<tr><td>{$id}</td><td>{$score} %</td><td>{$date}</td></tr>";
+                        }
                     }
-                }
 
-                ?>
-            </table>
+                    ?>
+                </table>
             </div>
             <?php echo $message ?>
 
-            <div class="transparent-rounded marginTop" id="cal-heatmap-wrapper">
-            <div id="cal-heatmap"></div>
+            <div class="row">
+                <div class="col-md-offset-1">
+                    <h2>Kalendář aktivity</h2>
+                </div>
             </div>
+            <div class="row">
+                <div class="transparent-rounded marginTop" id="cal-heatmap-wrapper">
+                    <div id="cal-heatmap" style="margin-left: auto"></div>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -60,11 +72,11 @@
         data: data,
         afterLoadData: parser,
 
-        range: 3,
+        range: 1,
         start: new Date(),
-        domain: "month",
+        domain: "year",
         subDomain: "x_day",
-        cellSize: 20,
+        cellSize: 30,
         subDomainTextFormat: "%d",
         itemSelector: "#cal-heatmap"
 
