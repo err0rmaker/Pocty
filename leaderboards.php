@@ -2,8 +2,8 @@
 
 require_once __DIR__ . '/bootstrap.php';
 $message = '';
-$conn = $conn->getConnection();
-$result = $conn->query("SELECT name,score_avg,test_count FROM soupak_uzivatele ORDER BY score_avg DESC LIMIT 10");
+$result = $DB->select('soupak_uzivatele', ['name', 'score_avg', 'test_count'], 'ORDER BY score_avg DESC LIMIT 10');
+
 while ($row = $result->fetch_assoc()) {
     $data[] = $row;
 }

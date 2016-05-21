@@ -45,7 +45,9 @@ class Database
 
 
         if (!$result = $this->conn->query($sql)) {
+            echo $sql;
             throw new Exception('Při vykonávání dotazu se vyskytla chyba');
+
 
         }
         return $result;

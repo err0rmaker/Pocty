@@ -7,6 +7,18 @@
 </div>
 
 <div class="container">
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+            <h3 class="">Vaše průměrné skóre je: <?php echo $dataUser['score_avg'] ?> %</h3>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+            <h3 class="">Celkový počet testů: <?php echo $dataUser['test_count'] ?></h3>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-7 col-md-offset-2" id="tests">
             <div class="row">
@@ -14,6 +26,7 @@
                     <h2>Historie testů</h2>
                 </div>
             </div>
+
             <div class="table-responsive transparent-rounded">
 
                 <table class='table'>

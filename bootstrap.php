@@ -20,9 +20,7 @@ $Math = new Math();
 $_SESSION['math'] = $Math;
 
 
-
-
-if (!preg_match('#\b(index.php|login.php|register.php)\b#', SCRIPT_FILENAME) && $auth->isGuest()) {
+if (!preg_match('#\b(login.php|register.php|index.php)\b#', SCRIPT_FILENAME) && $auth->isGuest()) {
     header('Location: login.php');
     exit;
 }

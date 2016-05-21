@@ -14,7 +14,7 @@
         <div class="col-md-5 col-md-offset-3" id="tests">
 
 
-            <table class='table'>
+            <table class='table transparent-rounded'>
                 <tr>
                     <th>Pořadí</th>
                     <th>Průměrné skóre</th>
@@ -22,7 +22,7 @@
                 </tr>
                 <?php
                 foreach ($data as $value) {
-                    echo "<tr><td>{$value['name']}<td><td>{$value['score_avg']}</td><td>{$value['test_count']}</td></tr>";
+                    echo "<tr><td>{$value['name']}</td><td>{$value['score_avg']}</td><td>{$value['test_count']}</td></tr>";
                 }
                 ?>
             </table>

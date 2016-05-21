@@ -36,15 +36,15 @@
 
             <div class="form-group">
                 <div class="marginTop col-md-6 col-md-offset-3 " id="testCount">
-
+                    <label> Počet příkladů
                     <div class="form-group">
-                        <label class="radio-inline"><input type="radio" name="count" value="5">5</label>
+                        <label class="radio-inline"><input type="radio" name="count" value="5" checked>5</label>
                         <label class="radio-inline"><input type="radio" name="count" value="10">10</label>
                         <label class="radio-inline"><input type="radio" name="count" value="20">20</label>
                     </div>
+                    </label>
                     <div class="form-group">
-                        <label for="submit">Vygenerovat</label>
-                        <input class="btn btn-default" type="submit" id="submit">
+                        <input class="btn btn-default" type="submit" id="submit" value="Vygenerovat test">
                     </div>
                 </div>
             </div>

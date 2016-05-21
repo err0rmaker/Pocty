@@ -30,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">Karel Šoupa | Počty</a>
+            <a class="navbar-brand" href="index.php">Karel Šoupa | Počty</a>
         </div>
         <a class="navbar-brand" href="profile.php">Přhlášen
             jako: <?php echo $auth->isGuest() ? '' : $auth->getLoggedInUserName(); ?></a>
@@ -63,7 +63,7 @@
 
                 <?php } ?>
                 <li>
-                    <a href="index.php" class="navbar-btn">
+                    <a href="../index.php" class="navbar-btn">
                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                     </a>
                 </li>

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4" id="tests">
 
-            <form method='post' action='userTestResult.php'>
+            <form method='post' action='userTestResult.php' class="text-center">
                 <?php
                     foreach ($testItems as $key => $tempTestItem) {
 
@@ -25,8 +25,7 @@
 
 
                 ?>
-                <label for='submitTest'>Zkontrolovat</label>
-                <input class='btn btn-default' type='submit' id='submitTest'>
+                <input class='btn btn-default' type='submit' id='submitTest' value="Zkontrolovat">
             </form>
 
         </div>
