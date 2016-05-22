@@ -44,15 +44,19 @@ class Database
         $sql .= "$condition";
 
 
-        if (!$result = $this->conn->query($sql)) {
-            echo $sql;
+        return $this->myQuery($sql);
+
+
+    }
+
+    public function myQuery($sql)
+    {
+        $result = $this->conn->query($sql);
+        if (!$result) {
+            echo 'chyba';
             throw new Exception('Při vykonávání dotazu se vyskytla chyba');
-
-
         }
         return $result;
-
-
     }
 
     /**
@@ -80,14 +84,7 @@ class Database
         }
         $sql .= ')';
 
-        $result = $this->conn->query($sql);
-
-        if (!$result) {
-            echo 'chyba';
-            throw new Exception('Při vykonávání dotazu se vyskytla chyba');
-        }
-
-        return $result;
+        return $this->myQuery($sql);
 
     }
 
@@ -97,15 +94,18 @@ class Database
         $maxTargetValues = count($targetValues) - 1;
 
         if ($maxInputValues !== $maxTargetValues) {
-            throw new Exception['input and target values must be the same size'];
+            throw new Exception('input and target values must be the same size');
         }
-        $sql = "UPDATE $table SET";
+        $sql = "UPDATE $table SET ";
 
-        foreach ($inputValues as $key => $value) {
+        foreach ($targetValues as $key => $value) {
             $sql .= $value . ' = ';
-            $sql .= '\'' . "$targetValues[$key]" . '\'';
+            $sql .= "$inputValues[$key]";
             ($key === $maxInputValues) ? $sql .= '' : $sql .= ',';
         }
+        $sql .= ' ' . $condition;
+        echo $sql;
+        $this->myQuery($sql);
 
     }
 
@@ -119,6 +119,9 @@ class Database
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
+        if (count($data) === 0) {
+            return false;
+        } 
         return $data;
     }
 

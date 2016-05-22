@@ -56,7 +56,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="transparent-rounded marginTop" id="cal-heatmap-wrapper">
+
+                <a class="btn transparent-rounded" id="onMinDomainReached-previous">
+
+                        <span class="glyphicon glyphicon-arrow-left">
+                        </span>
+
+                </a>
+                <a class="btn transparent-rounded" id="onMinDomainReached-next">
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                </a>
+
+            </div>
+            <div class="row">
+                <div class="transparent-rounded marginTop" style="background-color: #1b6d85" id="cal-heatmap-wrapper">
                     <div id="cal-heatmap" style="margin-left: auto"></div>
                 </div>
             </div>
@@ -85,13 +98,20 @@
         data: data,
         afterLoadData: parser,
 
-        range: 1,
+        range: 2,
         start: new Date(),
-        domain: "year",
+
+        domain: "month",
         subDomain: "x_day",
         cellSize: 30,
         subDomainTextFormat: "%d",
-        itemSelector: "#cal-heatmap"
+        itemSelector: "#cal-heatmap",
+
+        nextSelector: "#onMinDomainReached-next",
+        previousSelector: "#onMinDomainReached-previous",
+        label: {
+            position: "top",
+        }
 
 
     });

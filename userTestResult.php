@@ -47,22 +47,25 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
 
     }
 
-    $DB->insert('soupak_testy', ['id_uzivatel', 'skore'], [$_SESSION['user_id'], $finalScore]);
+    try {
+        $DB->insert('soupak_testy', ['id_uzivatel', 'skore'], [$auth->getLoggedInUserId(), $finalScore]);
 
 
-    //update procent testu a poctu testu
-    $result = $DB->select('soupak_uzivatele', ['score_avg', 'score_total', 'test_count'], "WHERE id = {$_SESSION['user_id']}");
-    $row = $result->fetch_assoc();
-    $score_total = $row['score_total'];
-    $score_total += $finalScore;
-    $test_count = $row['test_count'];
-    $test_count++;
-    $score_avg = $row['score_avg'];
+        //update procent testu a poctu testu
+        $result = $DB->select('soupak_uzivatele', ['score_avg', 'score_total', 'test_count'], "WHERE id = {$auth->getLoggedInUserId()}");
+        
+        $row = $result->fetch_assoc();
+        $score_total = $row['score_total'];
+        $score_total += $finalScore;
+        $test_count = $row['test_count'];
+        $test_count++;
+        $score_avg = $row['score_avg'];
 
-    $score_avg = ($score_total / $test_count);
-
-    //$conn2 = $conn->getConnection();
-    //$conn2->query("UPDATE soupak_uzivatele  SET score_avg = '$score_avg', score_total = '$score_total',test_count = '$test_count' WHERE id = {$_SESSION['user_id']}");
+        $score_avg = ($score_total / $test_count);
+        $DB->update('soupak_uzivatele', ['score_avg', 'score_total', 'test_count'], [$score_avg, $score_total, $test_count], "WHERE id = {$auth->getLoggedInUserId()}");
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 
 
 
