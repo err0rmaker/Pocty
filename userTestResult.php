@@ -10,7 +10,6 @@ $currentMaxTestID = getMaxTestID($DB);
 
 $testItemTable = 'soupak_priklady';
 $testTable = 'soupak_testy';
-//echo $currentMaxTestID['id'];
 if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSION)) {
 
 
@@ -81,7 +80,6 @@ function updateStats($DB, $finalScore, $uid)
     if ((int)$data['score_total'] !== 0 && (int)$data['test_count'] !== 0) {
     $data['score_avg'] = ($data['score_total'] / $data['test_count']);
     }
-    var_dump($data);
 
     $DB->update('soupak_uzivatele', array_keys($data), array_values($data), "WHERE id = {$uid}");
 
@@ -98,9 +96,8 @@ function getMaxTestID($DB)
 }
 
 /**
- * @param $DB mysqli
+ * @param $DB Database
  * @param $table
- * @param $testID
  * @param $data
  */
 function insertTestItemIntoDB($DB, $table, $data)

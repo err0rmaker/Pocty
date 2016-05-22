@@ -72,9 +72,7 @@ class Database
 
         $sql = "INSERT INTO $table ";
         $sql .= '(';
-        $maxInputValues = count($inputValues) - 1;
         $maxTargetValues = count($targetValues) - 1;
-        echo $maxInputValues;
         foreach ($targetValues as $key => $value) {
             $sql .= "$value";
             ($key === $maxTargetValues) ? $sql .= '' : $sql .= ',';
