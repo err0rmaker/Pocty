@@ -16,7 +16,6 @@ $auth = new Authentication($conn);
 $DB = new Database($conn);
 $Math = new Math();
 
-
 $_SESSION['math'] = $Math;
 
 

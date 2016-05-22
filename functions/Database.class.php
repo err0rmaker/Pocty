@@ -31,6 +31,7 @@ class Database
     public function select($table, $targetValues, $condition)
     {
 
+
         $maxTargetValues = count($targetValues) - 1;
 
         $sql = 'SELECT ';
@@ -68,10 +69,13 @@ class Database
      */
     public function insert($table, $targetValues, $inputValues)
     {
+
+
         $sql = "INSERT INTO $table ";
         $sql .= '(';
         $maxInputValues = count($inputValues) - 1;
         $maxTargetValues = count($targetValues) - 1;
+        echo $maxInputValues;
         foreach ($targetValues as $key => $value) {
             $sql .= "$value";
             ($key === $maxTargetValues) ? $sql .= '' : $sql .= ',';
@@ -80,7 +84,7 @@ class Database
         foreach ($inputValues as $key => $value) {
 
             $sql .= '\'' . "$value" . '\'';
-            ($key === $maxInputValues) ? $sql .= '' : $sql .= ',';
+            ($key === $maxTargetValues) ? $sql .= '' : $sql .= ',';
         }
         $sql .= ')';
 
@@ -88,6 +92,13 @@ class Database
 
     }
 
+    /**
+     * @param $table
+     * @param $targetValues []
+     * @param $inputValues []
+     * @param $condition string
+     * @throws Exception
+     */
     public function update($table, $targetValues, $inputValues, $condition)
     {
         $maxInputValues = count($inputValues) - 1;
@@ -115,10 +126,16 @@ class Database
      */
     public function getData($result)
     {
+        if ($result->num_rows === 1) {
+            return $result->fetch_assoc();
+        }
+        
         $data = [];
         while ($row = $result->fetch_assoc()) {
+
             $data[] = $row;
         }
+
         if (count($data) === 0) {
             return false;
         } 

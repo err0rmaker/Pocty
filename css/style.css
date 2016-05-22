@@ -33,14 +33,14 @@ h1 {
 
 .transparent-rounded a, #customNavbar a, .operationMode a, .form-signin a {
   background-color: rgba(0, 0, 0, 0.2);
-  color: #9acfea;
+  color: #F5F5F5;
   border: none;
   margin-left: 20px;
   border-radius: 20px;
 }
 
 .transparent-rounded a:hover, #customNavbar a:hover, .operationMode a:hover, .form-signin a:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0px 0px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 0 rgba(0, 0, 0, 0.23);
 }
 
 #calcResult {
@@ -120,11 +120,6 @@ body {
   margin-top: 20px;
 }
 
-.graph-label {
-  background-color: #00b3ee;
-}
-
-.domain
 .footer {
   margin-top: 600px;
 }

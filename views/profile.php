@@ -51,27 +51,28 @@
             <?php echo $message ?>
 
             <div class="row">
-                <div class="col-md-offset-1">
+                <div class="col-md-offset-1 marginTop">
                     <h2>Kalendář aktivity</h2>
                 </div>
             </div>
+            <div class="col-md-6 col-md-offset-3 marginTop">
             <div class="row">
-
+                <div class="col-md-offset-4">
                 <a class="btn transparent-rounded" id="onMinDomainReached-previous">
-
-                        <span class="glyphicon glyphicon-arrow-left">
-                        </span>
-
+                    <span class="glyphicon glyphicon-arrow-left"></span>
                 </a>
+
                 <a class="btn transparent-rounded" id="onMinDomainReached-next">
                     <span class="glyphicon glyphicon-arrow-right"></span>
                 </a>
-
+                </div>
             </div>
+
             <div class="row">
                 <div class="transparent-rounded marginTop" style="background-color: #1b6d85" id="cal-heatmap-wrapper">
                     <div id="cal-heatmap" style="margin-left: auto"></div>
                 </div>
+            </div>
             </div>
 
 
@@ -83,7 +84,7 @@
 <script type="text/javascript">
 
 
-    var data = <?php echo json_encode($dates);?>;
+    var data = <?php echo json_encode($dataHeatMap);?>;
 
     var parser = function (data) {
         var stats = {};
@@ -98,7 +99,7 @@
         data: data,
         afterLoadData: parser,
 
-        range: 2,
+        range: 1,
         start: new Date(),
 
         domain: "month",

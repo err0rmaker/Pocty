@@ -8,9 +8,8 @@
 
 <div class="container">
     <div class="row">
-        <row>
             <div class="col-md-offset-3"><h3>Top 10 počtářů</h3></div>
-        </row>
+
         <div class="col-md-5 col-md-offset-3" id="tests">
 
 
