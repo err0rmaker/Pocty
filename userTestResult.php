@@ -61,8 +61,8 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
 
     $score_avg = ($score_total / $test_count);
 
-    $conn = $conn->getConnection();
-    $conn->query("UPDATE soupak_uzivatele  SET score_avg = '$score_avg', score_total = '$score_total',test_count = '$test_count' WHERE id = {$_SESSION['user_id']}");
+    //$conn2 = $conn->getConnection();
+    //$conn2->query("UPDATE soupak_uzivatele  SET score_avg = '$score_avg', score_total = '$score_total',test_count = '$test_count' WHERE id = {$_SESSION['user_id']}");
 
 
 

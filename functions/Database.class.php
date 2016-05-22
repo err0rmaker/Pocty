@@ -91,6 +91,37 @@ class Database
 
     }
 
+    public function update($table, $targetValues, $inputValues, $condition)
+    {
+        $maxInputValues = count($inputValues) - 1;
+        $maxTargetValues = count($targetValues) - 1;
+
+        if ($maxInputValues !== $maxTargetValues) {
+            throw new Exception['input and target values must be the same size'];
+        }
+        $sql = "UPDATE $table SET";
+
+        foreach ($inputValues as $key => $value) {
+            $sql .= $value . ' = ';
+            $sql .= '\'' . "$targetValues[$key]" . '\'';
+            ($key === $maxInputValues) ? $sql .= '' : $sql .= ',';
+        }
+
+    }
+
+    /**
+     * @param $result mysqli_result
+     * @return array string data from
+     */
+    public function getData($result)
+    {
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
 
 
 
