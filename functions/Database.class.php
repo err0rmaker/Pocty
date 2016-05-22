@@ -45,17 +45,16 @@ class Database
         $sql .= "$condition";
 
 
-        return $this->myQuery($sql);
+        return $this->myQuery($sql, 'SELECT');
 
 
     }
 
-    public function myQuery($sql)
+    public function myQuery($sql, $sourceTask)
     {
         $result = $this->conn->query($sql);
         if (!$result) {
-            echo 'chyba';
-            throw new Exception('Při vykonávání dotazu se vyskytla chyba');
+            throw new Exception("Při vykonávání dotazu " . $sourceTask . " se vyskytla chyba");
         }
         return $result;
     }
@@ -88,7 +87,7 @@ class Database
         }
         $sql .= ')';
 
-        return $this->myQuery($sql);
+        return $this->myQuery($sql, 'INSERT');
 
     }
 
@@ -115,8 +114,7 @@ class Database
             ($key === $maxInputValues) ? $sql .= '' : $sql .= ',';
         }
         $sql .= ' ' . $condition;
-        echo $sql;
-        $this->myQuery($sql);
+        $this->myQuery($sql, 'UPDATE');
 
     }
 

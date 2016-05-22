@@ -42,7 +42,7 @@
                                 <?php echo $calcResult ?>
                             </td>
                             <td>
-                                <?php echo ($correct === true) ? '' : 'X' . $result ?>
+                                <?php echo ($correct === true) ? ' ' . $result : 'X ' . $result ?>
                             </td>
 
                         </tr>

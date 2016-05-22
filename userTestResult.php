@@ -9,7 +9,8 @@ $finalScore = 0;
 $currentMaxTestID = getMaxTestID($DB);
 
 $testItemTable = 'soupak_priklady';
-echo $currentMaxTestID['id'];
+$testTable = 'soupak_testy';
+//echo $currentMaxTestID['id'];
 if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSION)) {
 
 
@@ -52,7 +53,7 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
     $finalScore = ($score / $scoreMax) * 100;
 
     try {
-        $DB->insert($testItemTable, ['id_uzivatel', 'skore'], [$auth->getLoggedInUserId(), $finalScore]);
+        $DB->insert($testTable, ['id_uzivatel', 'skore'], [$auth->getLoggedInUserId(), $finalScore]);
 
         updateStats($DB, $finalScore, $auth->getLoggedInUserId());
 
@@ -69,17 +70,20 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
 /**
  * @param $DB Database
  * @param $finalScore
- * @param $id
+ * @param $uid
  */
-function updateStats($DB, $finalScore, $id)
+function updateStats($DB, $finalScore, $uid)
 {
-    $data = $DB->getData($DB->select('soupak_uzivatele', ['score_total', 'test_count'], "WHERE id = {$id}"));
+    $data = $DB->getData($DB->select('soupak_uzivatele', ['score_total', 'test_count'], "WHERE id = {$uid}"));
 
-    $data['score_total'] += $finalScore;
-    $data['test_count'] = $data['test_count']++;
+    $data['score_total'] += (int)$finalScore;
+    $data['test_count'] = (int)$data['test_count'] + 1;
+    if ((int)$data['score_total'] !== 0 && (int)$data['test_count'] !== 0) {
     $data['score_avg'] = ($data['score_total'] / $data['test_count']);
+    }
+    var_dump($data);
 
-    $DB->update('soupak_uzivatele', array_keys($data), array_values($data), "WHERE id = {$id}");
+    $DB->update('soupak_uzivatele', array_keys($data), array_values($data), "WHERE id = {$uid}");
 
 }
 
