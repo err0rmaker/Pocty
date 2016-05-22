@@ -7,9 +7,6 @@ class Database
      */
     private $conn;
 
-    //private $tableUser = 'soupak_uzivatele';
-    //private $tableTest = 'soupak_testy';
-
     /**
      * Database constructor.
      * @param $DBConn DBConnect
