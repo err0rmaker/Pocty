@@ -52,7 +52,7 @@ if (array_key_exists('result', $_POST) && array_key_exists('testItems', $_SESSIO
     $finalScore = ($score / $scoreMax) * 100;
 
     try {
-        $DB->insert('soupak_testy', ['id_uzivatel', 'skore'], [$auth->getLoggedInUserId(), $finalScore]);
+        $DB->insert($testItemTable, ['id_uzivatel', 'skore'], [$auth->getLoggedInUserId(), $finalScore]);
 
         updateStats($DB, $finalScore, $auth->getLoggedInUserId());
 
@@ -94,7 +94,7 @@ function getMaxTestID($DB)
 }
 
 /**
- * @param $DB
+ * @param $DB mysqli
  * @param $table
  * @param $testID
  * @param $data
