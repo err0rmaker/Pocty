@@ -5,9 +5,7 @@
         </div>
     </div>
 </div>
-
 <div class="container">
-
     <div class="row">
         <div class="col-md-4 col-md-offset-2">
             <h3 class="">Vaše průměrné skóre je: <?php echo $dataUser['score_avg'] ?> %</h3>
@@ -37,14 +35,11 @@
                     </tr>
                     <?php
                     if ($dataReady) {
-
                         foreach ($data as $row) {
                             list($id, $user_id, $score, $date) = array_values($row);
-
                             echo "<tr><td>{$id}</td><td>{$score} %</td><td>{$date}</td></tr>";
                         }
                     }
-
                     ?>
                 </table>
             </div>

@@ -51,6 +51,7 @@ class Database
     {
         $result = $this->conn->query($sql);
         if (!$result) {
+
             throw new Exception("Při vykonávání dotazu " . $sourceTask . " se vyskytla chyba");
         }
         return $result;
@@ -134,9 +135,6 @@ class Database
         } 
         return $data;
     }
-
-
-
 
 
 }
